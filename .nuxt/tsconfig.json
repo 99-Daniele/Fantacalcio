@@ -47,6 +47,9 @@
       "public": [
         "C:/Fantacalcio/public"
       ],
+      "public/*": [
+        "C:/Fantacalcio/public/*"
+      ],
       "#app": [
         "C:/Fantacalcio/node_modules/nuxt/dist/app"
       ],

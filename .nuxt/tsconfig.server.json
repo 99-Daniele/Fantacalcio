@@ -46,6 +46,12 @@
       ],
       "public": [
         "C:/Fantacalcio/public"
+      ],
+      "public/*": [
+        "C:/Fantacalcio/public/*"
+      ],
+      "#supabase/server": [
+        "C:/Fantacalcio/node_modules/@nuxtjs/supabase/dist/runtime/server/services/index"
       ]
     }
   },
