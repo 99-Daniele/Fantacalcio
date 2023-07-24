@@ -1,4 +1,4 @@
-export default {
+const client_manifest = {
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.css": {
     "resourceType": "style",
     "file": "error-404.23f2309d.css",
@@ -63,4 +63,7 @@ export default {
     "file": "entry.bbc96c86.css",
     "resourceType": "style"
   }
-}
+};
+
+export { client_manifest as default };
+//# sourceMappingURL=client.manifest.mjs.map
