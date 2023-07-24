@@ -6,7 +6,8 @@ export default defineEventHandler(async (event) => {
 
   const { data, error } = await client
     .from('player')
-    .select('*');
+    .select('Nome, Squadra, Ruolo, Id')
+    .order('Nome');
   
   if (error) {
     throw createError({ statusCode: 400, statusMessage: error.message });

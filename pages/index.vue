@@ -1,11 +1,9 @@
 <template>
-    Profava prova
-    {{ player }}
-    p
+    <NuxtLink to="/player">Players</NuxtLink>
 </template>
 
 <script setup>
 
-    const { data: player } = await useFetch('/api/player')
+    const { data: players } = await useFetch('/api/player')
     
 </script>
