@@ -44,6 +44,9 @@
       "assets": [
         "C:/Fantacalcio/assets"
       ],
+      "assets/*": [
+        "C:/Fantacalcio/assets/*"
+      ],
       "public": [
         "C:/Fantacalcio/public"
       ],

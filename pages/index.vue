@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink to="/player">Players</NuxtLink>
+    <h1>HOME</h1>
 </template>
 
 <script setup>

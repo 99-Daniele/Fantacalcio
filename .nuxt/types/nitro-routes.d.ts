@@ -9,6 +9,12 @@ declare module 'nitropack' {
     '/api/player': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/index.get').default>>>>
     }
+    '/api/team/:id': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/team/[id]').default>>>>
+    }
+    '/api/team': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/team/index.get').default>>>>
+    }
     '/__nuxt_error': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/renderer').default>>>>
     }
