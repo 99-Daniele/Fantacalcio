@@ -1,0 +1,58 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "paths": {
+      "#imports": [
+        "C:/Fantacalcio/.nuxt/types/nitro-imports"
+      ],
+      "#paths": [
+        "C:/Fantacalcio/node_modules/nuxt/dist/core/runtime/nitro/paths"
+      ],
+      "~": [
+        "C:/Fantacalcio"
+      ],
+      "~/*": [
+        "C:/Fantacalcio/*"
+      ],
+      "@": [
+        "C:/Fantacalcio"
+      ],
+      "@/*": [
+        "C:/Fantacalcio/*"
+      ],
+      "~~": [
+        "C:/Fantacalcio"
+      ],
+      "~~/*": [
+        "C:/Fantacalcio/*"
+      ],
+      "@@": [
+        "C:/Fantacalcio"
+      ],
+      "@@/*": [
+        "C:/Fantacalcio/*"
+      ],
+      "assets": [
+        "C:/Fantacalcio/assets"
+      ],
+      "public": [
+        "C:/Fantacalcio/public"
+      ]
+    }
+  },
+  "include": [
+    "C:/Fantacalcio/.nuxt/types/nitro-nuxt.d.ts",
+    "./types/nitro.d.ts",
+    "../**/*",
+    "../server/**/*"
+  ]
+}
