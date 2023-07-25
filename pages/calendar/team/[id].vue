@@ -15,12 +15,8 @@
     const route = useRoute()
     const id = route.params.id
     const { data: teams } = await useFetch('/api/team')
-    console.log(teams)
     const { data: team } = await useFetch('/api/team/' + id)
-    console.log(team)
-    const { data: calendar } = await useFetch('/api/calendar/team/' + id)
-    console.log(calendar)
-    
+    const { data: calendar } = await useFetch('/api/calendar/team/' + id)    
 
     let games = []
     for(let i = 1; i <= 38; i++){

@@ -12,11 +12,20 @@ declare module 'nitropack' {
     '/api/calendar/team/:id': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/calendar/team/[id]').default>>>>
     }
+    '/api/championship/:id': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/championship/[id]').default>>>>
+    }
+    '/api/championship': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/championship/index.get').default>>>>
+    }
     '/api/player/:id': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/[id]').default>>>>
     }
     '/api/player': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/index.get').default>>>>
+    }
+    '/api/squad/:id': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/squad/[id]').default>>>>
     }
     '/api/team/:id': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/team/[id]').default>>>>
