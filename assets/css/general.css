@@ -1,22 +1,62 @@
+body{
+    margin: 0;
+}
+
+.page{
+    margin-left: 120px;
+    font-family:'Calibri';
+}
+
+.navigator{
+    box-shadow: 0 2px 0 0 #47C6EF;
+    height: 60px;
+    display: flex;
+}
+
+.navigator a{
+    color: #47C6EF;
+    text-decoration: none;
+    font-family:'Calibri';
+    font-size: 24px;
+}
+
+.navigator a:hover{
+    text-decoration: underline;
+}
+
+.logo{
+    margin-left: 80px;
+    margin-top: 14px;
+}
+
+.landmark{
+    margin-top: 16px;
+    position: absolute;
+    right: 80px;
+    display: flex;
+    gap: 56px
+}
+
+.title{
+    border-top: solid 4px #47C6EF;
+    margin-top: 60px;
+    width: fit-content;
+    font-size: 36px;
+    height: 80px;
+}
+
 .card-container{
     display: flex;
     flex-wrap: wrap;
+    margin-top: 40px;
+    column-gap: 48px;
+    row-gap: 40px;
 }
 
 .card {
-    box-shadow: 0 4px 8px 0 black;
-    transition: 0.3s;
-    width: 256px;
-    height: 400px;
+    width: 160px;
+    height: 220px;
     background-color: white;
-    transition: background-color .3s ease-in-out;
     border-radius: 8px;
-}
-
-.card .data-container{
-    padding: 16px;
-    position: relative; 
-    width: 224px;
-    height: 96px;
-    margin-top: -6px;
+    border: solid 2px #47C6EF;
 }

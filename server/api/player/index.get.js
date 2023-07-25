@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
 
   const { data, error } = await client
     .from('player')
-    .select('Nome, Squadra, Ruolo, Id')
+    .select('Nome, team(Nome, color1, color2), Ruolo, Id')
     .order('Nome');
   
   if (error) {

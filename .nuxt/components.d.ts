@@ -3,6 +3,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     'Header': typeof import("../components/Header.vue")['default']
     'PlayerCard': typeof import("../components/PlayerCard.vue")['default']
+    'PlayerJersey': typeof import("../components/PlayerJersey.vue")['default']
     'NuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
     'NuxtLayout': typeof import("../node_modules/nuxt/dist/app/components/layout")['default']
     'NuxtErrorBoundary': typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
@@ -23,6 +24,7 @@ declare module 'vue' {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'LazyHeader': typeof import("../components/Header.vue")['default']
     'LazyPlayerCard': typeof import("../components/PlayerCard.vue")['default']
+    'LazyPlayerJersey': typeof import("../components/PlayerJersey.vue")['default']
     'LazyNuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
     'LazyNuxtLayout': typeof import("../node_modules/nuxt/dist/app/components/layout")['default']
     'LazyNuxtErrorBoundary': typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
@@ -46,6 +48,7 @@ declare module 'vue' {
 
 export const Header: typeof import("../components/Header.vue")['default']
 export const PlayerCard: typeof import("../components/PlayerCard.vue")['default']
+export const PlayerJersey: typeof import("../components/PlayerJersey.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/layout")['default']
 export const NuxtErrorBoundary: typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
@@ -66,6 +69,7 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const LazyHeader: typeof import("../components/Header.vue")['default']
 export const LazyPlayerCard: typeof import("../components/PlayerCard.vue")['default']
+export const LazyPlayerJersey: typeof import("../components/PlayerJersey.vue")['default']
 export const LazyNuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
 export const LazyNuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/layout")['default']
 export const LazyNuxtErrorBoundary: typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
