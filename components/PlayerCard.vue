@@ -3,15 +3,25 @@
       <div class="jersey">
         <PlayerJersey :color1="color1" :color2="color2" :role="role"></PlayerJersey>
       </div>
+      <div class="data-container">
+        <div class="name">
+          {{ name }}
+        </div>
+        <div class="info">
+          <div class="extra">
+            {{ squad }}<br>33 cr<br>1° SLOT
+          </div>
+          <div class="rate">
+            91
+          </div>
+        </div>
+      </div>
     </div>
 </template>
 
 <style scoped>
 
-  .jersey{
-    margin-left: 18%;
-    margin-top: 11%;
-  }
+  
 
 </style>
 
