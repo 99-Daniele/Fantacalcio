@@ -1,13 +1,11 @@
 <template>
     <div class="navigator">
-        <div class="logo">
-            <NuxtLink to="/">HOME</NuxtLink>
-        </div>
+        <NuxtLink to="/"><img src="~\assets\img\logo.jpg" id="logo"></NuxtLink>
         <div class="landmark">
-            <NuxtLink to="/player">PLAYERS</NuxtLink>
-            <NuxtLink to="/team">TEAMS</NuxtLink>
-            <NuxtLink to="/calendar">CALENDAR</NuxtLink>
-            <NuxtLink to="/championship">CHAMPIONSHIPS</NuxtLink>
+            <NuxtLink to="/player">GIOCATORI</NuxtLink>
+            <NuxtLink to="/team">SQUADRE</NuxtLink>
+            <NuxtLink to="/calendar">CALENDARIO</NuxtLink>
+            <NuxtLink to="/championship">CAMPIONATI</NuxtLink>
         </div>
     </div>
 </template>

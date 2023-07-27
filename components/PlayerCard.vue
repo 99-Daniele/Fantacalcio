@@ -9,10 +9,10 @@
         </div>
         <div class="info">
           <div class="extra">
-            {{ squad }}<br>33 cr<br>1° SLOT
+            {{ squad }}<br>{{ cost }} cr<br>{{ slot }}° SLOT
           </div>
           <div class="rate">
-            91
+            {{ Math.ceil(rate) }}
           </div>
         </div>
       </div>
@@ -27,6 +27,6 @@
 
 <script setup>
 
-  const props = defineProps(['name', 'squad', 'role', 'id', 'color1', 'color2']);
+  const props = defineProps(['name', 'squad', 'role', 'id', 'color1', 'color2', 'rate', 'slot', 'cost']);
   
 </script>

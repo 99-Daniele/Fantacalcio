@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Fantacalcio',
-      link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
+      link: [{ rel: 'icon', type: 'image/png', href: '/favicon.ico' }],
       meta: [
         {
           charset: 'UTF-8',
@@ -20,7 +20,7 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Gioca al Fantacalcio, il gioco piu amato dagli italiani.',
+            'Gioca al Fantacalcio, il gioco piu amato dagli italiani',
         },
         {
           name: 'keywords',

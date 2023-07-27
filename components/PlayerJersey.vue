@@ -14,6 +14,8 @@
         width: 24px;
         height: 40px;
         rotate: 45deg;
+        border: solid 1px black;
+        z-index: 0;
     }
 
     .left-big-rectangle{
@@ -21,6 +23,10 @@
         margin-left: 18px;
         width: 32px;
         height: 80px;
+        border-top: solid 1px black;
+        border-left: solid 1px black;
+        border-bottom: solid 1px black;
+        z-index: 1;
     }
 
     .right-big-rectangle{
@@ -28,6 +34,10 @@
         margin-left: 50px;
         width: 32px;
         height: 80px;
+        border-top: solid 1px black;
+        border-right: solid 1px black;
+        border-bottom: solid 1px black;
+        z-index: 1;
     }
 
     .right-rectangle{
@@ -37,6 +47,8 @@
         width: 24px;
         height: 40px;
         rotate: 135deg;
+        border: solid 1px black;
+        z-index: 0;
     }
 
     .role{
@@ -46,6 +58,8 @@
         font-weight: bold;
         margin-left: 40px;
         margin-top: 12px;
+        -webkit-text-stroke: 1px black;
+        z-index: 2;
     }
 
 

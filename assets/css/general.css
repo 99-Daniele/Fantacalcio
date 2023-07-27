@@ -11,6 +11,7 @@ a{
 .page{
     margin-left: 120px;
     font-family:'Calibri';
+    margin-bottom: 40px;
 }
 
 .navigator{
@@ -30,9 +31,11 @@ a{
     text-decoration: underline;
 }
 
-.logo{
+#logo{
     margin-left: 80px;
     margin-top: 14px;
+    width: 32px;
+    height: 32px;
 }
 
 .landmark{
@@ -46,15 +49,24 @@ a{
 .title{
     border-top: solid 4px #47C6EF;
     margin-top: 60px;
+    padding-top: 12px;
     width: fit-content;
     font-size: 36px;
     height: 80px;
 }
 
+#search{
+    border-radius: 8px;
+    position: absolute;
+    top: 242px;
+    right: 94px;
+    width: 160px;
+}
+
 .card-container{
     display: flex;
     flex-wrap: wrap;
-    margin-top: 40px;
+    margin-top: 60px;
     column-gap: 48px;
     row-gap: 40px;
 }
@@ -63,6 +75,7 @@ a{
     width: 160px;
     height: 220px;
     background-color: white;
+    transition: 0.5s;
     border-radius: 8px;
     border: solid 2px #47C6EF;
 }
@@ -103,3 +116,29 @@ a{
     width: 50%;
     text-align: center;
 }
+
+.go-up{
+    position: fixed;
+    bottom: 40px;
+    right: 32px;
+    cursor: pointer;
+}
+
+.circle{ 
+  height: 40px;
+  width: 40px;
+  border: solid 2px #47C6EF;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.arrow {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid #47C6EF;
+    border-left: 2px solid #47C6EF;
+    transform: rotate(45deg);
+    margin-top: 35%;
+    margin-left: 22%;
+  }
