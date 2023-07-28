@@ -1,6 +1,6 @@
 <template>
     <div class="navigator">
-        <div id="logo">
+        <div id="mark">
             <NuxtLink to="/"><img src="~\assets\img\logo.png"></NuxtLink>
         </div>
         <div class="landmark">

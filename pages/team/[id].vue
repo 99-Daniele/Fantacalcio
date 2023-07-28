@@ -1,16 +1,78 @@
 <template>
-    {{ team.Nome }}
+    <div class="title">
+        {{ players[0].team.Nome }}
+    </div>
+    <input id="search" type="text" v-model="search" placeholder="Search player.." autocomplete="off"/>
+        <img :src="'/logo/' + players[0].team.Nome + '.png'" id="logo">
     <div class="card-container">
-        <div v-for="player in team.player">
-            <NuxtLink :to='"/player/" + player.Id'><PlayerCard :name="player.Nome" :squad="player.Squadra" :role="player.Ruolo" :id="player.Id"/></NuxtLink>
+        <div v-for="player in searchedPlayers">
+            <NuxtLink :to='"/player/" + player.Id'><PlayerCard :name="player.Nome" :squad="player.team.Nome" :role="player.Ruolo" :id="player.Id" :color1="player.team.color1" :color2="player.team.color2" :rate="player.rate" :slot="player.slot" :cost="player.cost"/></NuxtLink>
+        </div>
+    </div>
+    <div class="go-up" id="go-up-button" @click="back()">
+        <div class="circle">
+            <div class="arrow"></div>
         </div>
     </div>
 </template>
 
+<style scoped>
+
+    .player-card:hover{
+        box-shadow: 0 0 10px black;
+        transition: 0.5s;
+    }
+
+    #search{
+        top: 212px;
+        left: 120px;
+    }
+
+    #logo{
+        position: absolute;
+        height: 120px;
+        top: 120px;
+        right: 120px;
+    }
+
+</style>
+
 <script setup>
 
+    import { ref } from 'vue'
+
+    const search = ref('')
+
     const route = useRoute()
-    const id = route.params.id
-    const { data: team } = await useFetch('/api/team/' + id)
+    const team = route.params.id
+    const { data: players } = await useFetch('/api/team/' + team)
+
+    const searchedPlayers = computed(() => {
+        if(search.value.length > 0){
+            return players.value.filter(player => {
+                return player.Nome.toLowerCase().startsWith(search.value.toLowerCase())
+            })
+        }
+        else{
+            return players.value
+        }
+    })
     
+</script>
+
+<script>
+
+    import { ref } from 'vue'
+
+    export default {
+        methods: {
+            back: function(){
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                })
+            }
+        }
+    }
+
 </script>

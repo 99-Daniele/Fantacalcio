@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="player-card">
       <div class="jersey">
         <PlayerJersey :color1="color1" :color2="color2" :role="role"></PlayerJersey>
       </div>

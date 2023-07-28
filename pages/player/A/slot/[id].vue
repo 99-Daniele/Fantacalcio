@@ -71,7 +71,7 @@
         width: 593.34px;
     }
 
-    .card:hover{
+    .player-card:hover{
         box-shadow: 0 0 10px black;
         transition: 0.5s;
     }

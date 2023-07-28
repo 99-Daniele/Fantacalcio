@@ -63,20 +63,20 @@
         left: 60%;
     }
 
-    #big-card .card {
+    #big-card .player-card {
         width: 320px;
         height: 440px;
     }
 
-    #big-card .card .data-container .name{
+    #big-card .player-card .data-container .name{
         font-size: 32px;
     }
 
-    #big-card .card .data-container .extra{
+    #big-card .player-card .data-container .extra{
       font-size: 24px;
     }
 
-    #big-card .card .data-container .rate{
+    #big-card .player-card .data-container .rate{
       font-size: 96px;
     }
 
