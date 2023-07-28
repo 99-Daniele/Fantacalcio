@@ -4,10 +4,36 @@
     </div>
     <input id="search" type="text" v-model="search" placeholder="Search player.." autocomplete="off"/>
     <div class="role-button-container">
-        <NuxtLink to="/player/P"><div id="p-button">P</div></NuxtLink>
+        <NuxtLink to="/player"><div id="p-button-active">P</div></NuxtLink>
         <NuxtLink to="/player/D"><div id="d-button">D</div></NuxtLink>
         <NuxtLink to="/player/C"><div id="c-button">C</div></NuxtLink>
         <NuxtLink to="/player/A"><div id="a-button">A</div></NuxtLink>
+    </div>
+    <div class="slot-button-container">
+        <div v-if="slot == 1">
+            <NuxtLink to="/player/P"><div class="button-active">1</div></NuxtLink>
+        </div>
+        <div v-else>
+            <NuxtLink to="/player/P/slot/1"><div class="button">1</div></NuxtLink>
+        </div>
+        <div v-if="slot == 2">
+            <NuxtLink to="/player/P"><div class="button-active">2</div></NuxtLink>
+        </div>
+        <div v-else>
+            <NuxtLink to="/player/P/slot/2"><div class="button">2</div></NuxtLink>
+        </div>
+        <div v-if="slot == 3">
+            <NuxtLink to="/player/P"><div class="button-active">3</div></NuxtLink>
+        </div>
+        <div v-else>
+            <NuxtLink to="/player/P/slot/3"><div class="button">3</div></NuxtLink>
+        </div>
+        <div v-if="slot == 0">
+            <NuxtLink to="/player/P"><div class="button-active">4+</div></NuxtLink>
+        </div>
+        <div v-else>
+            <NuxtLink to="/player/P/slot/0"><div class="button">4+</div></NuxtLink>
+        </div>
     </div>
     <div class="card-container">
         <div v-for="player in searchedPlayers">
@@ -37,7 +63,7 @@
 
     .slot-button-container{
         display: flex;
-        width: 796px;
+        width: 390.67px;
         margin-top: 8px;
         justify-content: space-between;
     }
@@ -50,6 +76,19 @@
         font-size: 24px;
         color: orange;
         background-color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    #p-button-active{
+        width: 188px;
+        border-radius: 8px;
+        border: solid 1px orange;
+        text-align: center;
+        font-size: 24px;
+        color: white;
+        background-color: orange;
         font-weight: bold;
         cursor: pointer;
         transition: 0.5s;
@@ -74,6 +113,19 @@
         transition: 0.5s;
     }
 
+    #d-button-active{
+        width: 188px;
+        border-radius: 8px;
+        border: solid 1px #47C6EF;
+        text-align: center;
+        font-size: 24px;
+        color: white;
+        background-color: #47C6EF;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
     #d-button:hover{
         color: white;
         background-color: #47C6EF;
@@ -88,6 +140,19 @@
         font-size: 24px;
         color: rgb(92, 255, 47);
         background-color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    #c-button-active{
+        width: 188px;
+        border-radius: 8px;
+        border: solid 1px rgb(92, 255, 47);
+        text-align: center;
+        font-size: 24px;
+        color: white;
+        background-color: rgb(92, 255, 47);
         font-weight: bold;
         cursor: pointer;
         transition: 0.5s;
@@ -112,6 +177,19 @@
         transition: 0.5s;
     }
 
+    #a-button-active{
+        width: 188px;
+        border-radius: 8px;
+        border: solid 1px red;
+        text-align: center;
+        font-size: 24px;
+        color: white;
+        background-color: red;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
     #a-button:hover{
         color: white;
         background-color: red;
@@ -131,6 +209,19 @@
         background-color: white;
     }
 
+    .button-active{
+        width: 80px;
+        border-radius: 8px;
+        border: solid 1px black;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.5s;
+        color: white;
+        background-color: black;
+    }
+
     .button:hover{
         background-color: black;
         color: white;
@@ -145,7 +236,9 @@
 
     const search = ref('')
 
-    const { data: players } = await useFetch('/api/player')
+    const route = useRoute()
+    const slot = route.params.id
+    const { data: players } = await useFetch('/api/player/P/slot/' + slot)
 
     const searchedPlayers = computed(() => {
         if(search.value.length > 0){
