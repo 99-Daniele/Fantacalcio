@@ -15,20 +15,22 @@ a{
 }
 
 .navigator{
-    box-shadow: 0 2px 0 0 #47C6EF;
+    box-shadow: 0 0 4px black;
     height: 60px;
     display: flex;
 }
 
 .navigator a{
-    color: #47C6EF;
-    text-decoration: none;
+    color: black;
+    border-bottom: solid 2px transparent;
     font-family:'Calibri';
     font-size: 24px;
+    transition: 0.5s;
 }
 
 .navigator a:hover{
-    text-decoration: underline;
+    border-color: black;
+    transition: 0.5s;
 }
 
 #logo{
@@ -47,7 +49,7 @@ a{
 }
 
 .title{
-    border-top: solid 4px #47C6EF;
+    border-top: solid 4px black;
     margin-top: 60px;
     padding-top: 12px;
     width: fit-content;
@@ -71,6 +73,232 @@ a{
     row-gap: 40px;
 }
 
+.card {
+    width: 160px;
+    height: 220px;
+    background-color: white;
+    transition: 0.5s;
+    border-radius: 8px;
+    border: solid 2px black;
+    transition: 0.5s;
+}
+
+.jersey{
+    margin-left: 18%;
+    margin-top: 12.5%;
+    width: 55%;
+}
+
+.card .data-container{
+    margin-top: 62.5%;
+    width: 75%;
+    height: 35%;
+    padding: 12.5%;
+    z-index: 1;
+}
+
+.card .data-container .name{
+    font-size: 16px;
+    font-weight: bold;
+    width: 110%;
+}
+
+.card .data-container .info{
+    display: flex;
+    margin-top: 10%;
+}
+
+.card .data-container .extra{
+    font-size: 12px;
+    width: 50%;
+    line-height: 150%;
+}
+
+.card .data-container .rate{
+    font-size: 48px;
+    font-weight: bold;
+    width: 50%;
+    text-align: center;
+}
+
+.role-button-container{
+    display: flex;
+    width: 796px;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.slot-button-container{
+    display: flex;
+    width: 796px;
+    margin-top: 8px;
+    justify-content: space-between;
+}
+
+#p-button{
+    width: 188px;
+    border-radius: 8px;
+    border: solid 1px orange;
+    text-align: center;
+    font-size: 24px;
+    color: orange;
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#p-button-active{
+    width: 188px;
+    border-radius: 8px;
+    border: solid 1px black;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    background-color: orange;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#p-button:hover{
+    color: white;
+    background-color: orange;
+    border-color: black;
+    transition: 0.5s;
+}
+
+#d-button{
+    width: 188px;
+    border-radius: 8px;
+    border: solid 1px #47C6EF;
+    text-align: center;
+    font-size: 24px;
+    color: #47C6EF;
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#d-button-active{
+    width: 188px;
+    border-radius: 8px;
+    border: solid 1px black;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    background-color: #47C6EF;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#d-button:hover{
+    color: white;
+    background-color: #47C6EF;
+    border-color: black;
+    transition: 0.5s;
+}
+
+#c-button{
+    width: 188px;
+    border-radius: 8px;
+    border: solid 1px rgb(92, 255, 47);
+    text-align: center;
+    font-size: 24px;
+    color: rgb(92, 255, 47);
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#c-button-active{
+    width: 188px;
+    border-radius: 8px;
+    border: solid 1px black;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    background-color: rgb(92, 255, 47);
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#c-button:hover{
+    color: white;
+    background-color: rgb(92, 255, 47);
+    border-color: black;
+    transition: 0.5s;
+}
+
+#a-button{
+    width: 188px;
+    border-radius: 8px;
+    border: solid 1px red;
+    text-align: center;
+    font-size: 24px;
+    color: red;
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#a-button-active{
+    width: 188px;
+    border-radius: 8px;
+    border: solid 1px black;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    background-color: red;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#a-button:hover{
+    color: white;
+    background-color: red;
+    border-color: black;
+    transition: 0.5s;
+}
+
+.button{
+    width: 80px;
+    border-radius: 8px;
+    border: solid 1px black;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+    color: black;
+    background-color: white;
+}
+
+.button-active{
+    width: 80px;
+    border-radius: 8px;
+    border: solid 1px black;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+    color: white;
+    background-color: black;
+}
+
+.button:hover{
+    background-color: black;
+    color: white;
+    transition: 0.5s;
+}
+
 .go-up{
     position: fixed;
     bottom: 40px;
@@ -81,7 +309,7 @@ a{
 .circle{ 
   height: 40px;
   width: 40px;
-  border: solid 2px #47C6EF;
+  border: solid 2px black;
   border-radius: 50%;
   display: inline-block;
 }
@@ -90,9 +318,25 @@ a{
     display: inline-block;
     width: 20px;
     height: 20px;
-    border-top: 2px solid #47C6EF;
-    border-left: 2px solid #47C6EF;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
     transform: rotate(45deg);
     margin-top: 35%;
     margin-left: 22%;
-  }
+}
+
+.goBackButton{
+    position: absolute;
+    bottom: 40px;
+    padding: 8px;
+    border: 2px solid black;
+    width: fit-content;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.goBackButton:hover{
+    box-shadow: 0 0 10px black;
+    transition: 0.5s;
+}

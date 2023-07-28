@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 
     const { data, error } = await client
         .from('player')
-        .select('Nome, team(Nome, color1, color2), Ruolo, Id, rate, slot, cost, PG, MV, FM, GF, GS, RP, "R+", "R-", Assist, Ammonizioni, Autogol, Espulsioni')
+        .select('Nome, team(Nome, color1, color2), Ruolo, Id, rate, slot, cost, PG, MV, FM, GF, GS, RP, RSG, RSB, Assist, Ammonizioni, Autogol, Espulsioni')
         .eq('Id', id)
         .limit(1)
         .single(); 
