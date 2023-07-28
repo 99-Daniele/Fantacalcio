@@ -71,52 +71,6 @@ a{
     row-gap: 40px;
 }
 
-.card {
-    width: 160px;
-    height: 220px;
-    background-color: white;
-    transition: 0.5s;
-    border-radius: 8px;
-    border: solid 2px #47C6EF;
-}
-
-.jersey{
-    margin-left: 18%;
-    margin-top: 12.5%;
-    width: 55%;
-}
-
-.card .data-container{
-    margin-top: 62.5%;
-    width: 75%;
-    height: 35%;
-    padding: 12.5%;
-}
-
-.card .data-container .name{
-    font-size: 16px;
-    font-weight: bold;
-    width: 110%;
-}
-
-.card .data-container .info{
-    display: flex;
-    margin-top: 10%;
-}
-
-.card .data-container .extra{
-    font-size: 12px;
-    width: 50%;
-    line-height: 150%;
-}
-
-.card .data-container .rate{
-    font-size: 48px;
-    font-weight: bold;
-    width: 50%;
-    text-align: center;
-}
-
 .go-up{
     position: fixed;
     bottom: 40px;

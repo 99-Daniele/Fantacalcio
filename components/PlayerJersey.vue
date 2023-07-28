@@ -6,7 +6,7 @@
     <div class="role">{{ role }}</div>
 </template>
 
-<style scoped>
+<style>
 
     .left-rectangle{
         position: absolute;
