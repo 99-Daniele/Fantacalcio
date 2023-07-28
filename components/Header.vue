@@ -1,6 +1,8 @@
 <template>
     <div class="navigator">
-        <NuxtLink to="/"><img src="~\assets\img\logo.jpg" id="logo"></NuxtLink>
+        <div id="logo">
+            <NuxtLink to="/"><img src="~\assets\img\logo.png"></NuxtLink>
+        </div>
         <div class="landmark">
             <NuxtLink to="/player">GIOCATORI</NuxtLink>
             <NuxtLink to="/team">SQUADRE</NuxtLink>

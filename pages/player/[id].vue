@@ -123,7 +123,10 @@
     }
 
     .player-info-text{
+        font-size: 14px;
         font-family: "AlloyInk";
+        justify-content: center;
+        width: 20px;
     }
 
     #icon{
