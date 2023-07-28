@@ -16,40 +16,40 @@
     </div>
     <div class="player-infos">
         <div class="player-info" style="width: 100%">
-            PG: {{ player.PG }}
+            <span class=player-info-text>PG</span>: {{ player.PG }}
         </div>
         <div class="player-info">
-            MV: {{ player.MV }}
+            <span class=player-info-text>MV</span>: {{ player.MV }}
         </div>
         <div class="player-info">
-            FM: {{ player.FM }}
+            <span class=player-info-text>FM</span>: {{ player.FM }}
         </div>
         <div class="player-info" v-if="player.Ruolo != 'P'">
-            GF: {{ player.GF }}
+            <img src="~\assets\img\GF.png" id="icon">: {{ player.GF }}
         </div>
         <div class="player-info" v-else>
-            GS: {{ player.GS }}
+            <img src="~\assets\img\GS.png" id="icon">: {{ player.GS }}
         </div>
         <div class="player-info">
-            Ass: {{ player.Assist }}
+            <img src="~\assets\img\ass.png" id="icon">: {{ player.Assist }}
         </div>
         <div class="player-info">
-            Amm: {{ player.Ammonizioni }}
+            <img src="~\assets\img\amm.png" id="icon">: {{ player.Ammonizioni }}
         </div>
         <div class="player-info">
-            Esp: {{ player.Espulsioni }}
+            <img src="~\assets\img\esp.png" id="icon">: {{ player.Espulsioni }}
         </div>
         <div class="player-info">
-            R+: {{ player.RSG }}
+            <img src="~\assets\img\R+.png" id="icon">: {{ player.RSG }}
         </div>
         <div class="player-info">
-            R-: {{ player.RSB }}
+            <img src="~\assets\img\R-.png" id="icon">: {{ player.RSB }}
         </div>
         <div class="player-info" v-if="player.Ruolo == 'P'">
-            RP: {{ player.RP }}
+            <img src="~\assets\img\RP.png" id="icon">: {{ player.RP }}
         </div>
         <div class="player-info">
-            Aut: {{ player.Autogol }}
+            <img src="~\assets\img\aut.png" id="icon">: {{ player.Autogol }}
         </div>
     </div>
     <div class="goBackButton" @click="$router.go(-1)">TORNA INDIETRO</div>
@@ -115,10 +115,20 @@
         width: 50%;
         display: flex;
         flex-wrap: wrap;
+        row-gap: 12px;
     }
 
     .player-info{
         width: 50%;
+    }
+
+    .player-info-text{
+        font-family: "AlloyInk";
+    }
+
+    #icon{
+        height: 20px;
+        width: 20px;
     }
 
 </style>
