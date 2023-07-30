@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
     .select('Nome, team(Nome, color1, color2), Ruolo, Id, rate, slot, cost')
     .eq('Ruolo', "A")
     .eq('slot', slot)
-    .order('Nome');
+    .order('rate', {ascending: false});
   
   if (error) {
     throw createError({ statusCode: 400, statusMessage: error.message });

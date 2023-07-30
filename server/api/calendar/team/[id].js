@@ -5,27 +5,15 @@ export default defineEventHandler(async (event) => {
   const client = serverSupabaseClient(event);
   const team = event.context.params.id;
 
-  const homeGames = await client
+  const {data, error} = await client
     .from('calendar')
-    .select('team1:team!teamId(*), team2:team!versusId(*), Giornata')
-    .eq('teamId', team)
-    .order('Giornata'); 
+    .select('homeTeam, awayTeam, round')
+    .or('homeTeam.eq.' + team + ',awayTeam.eq.' + team)
+    .order('round'); 
   
-  if (homeGames.error) {
+  if (error) {
     throw createError({ statusCode: 400, statusMessage: error.message });
   }
-
-  const awayGames = await client
-    .from('calendar')
-    .select('team1:team!teamId(*), team2:team!versusId(*), Giornata')
-    .eq('versusId', team)
-    .order('Giornata'); 
-  
-  if (awayGames.error) {
-    throw createError({ statusCode: 400, statusMessage: error.message });
-  }
-
-  const data = homeGames.data.concat(awayGames.data)
 
   return data;
 

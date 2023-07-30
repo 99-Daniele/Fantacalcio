@@ -1,9 +1,9 @@
 <template>
     <div class="title">
-        {{ players[0].team.Nome }}
+        {{ team }}
     </div>
     <input id="search" type="text" v-model="search" placeholder="Search player.." autocomplete="off"/>
-        <img :src="'/logo/' + players[0].team.Nome + '.png'" id="logo">
+    <img :src="'/logo/' + team + '.png'" id="logo">
     <div class="card-container">
         <div v-for="player in searchedPlayers">
             <NuxtLink :to='"/player/" + player.Id'><PlayerCard :name="player.Nome" :squad="player.team.Nome" :role="player.Ruolo" :id="player.Id" :color1="player.team.color1" :color2="player.team.color2" :rate="player.rate" :slot="player.slot" :cost="player.cost"/></NuxtLink>

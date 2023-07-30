@@ -5,9 +5,9 @@ export default defineEventHandler(async (event) => {
   const client = serverSupabaseClient(event);
 
   const { data, error } = await client
-    .from('calendar')
-    .select('team1:team!teamId(*), team2:team!versusId(*), Giornata')
-    .order('Giornata'); 
+    .from('calendargames')
+    .select('*')
+    .order('round'); 
    
   if (error) {
     throw createError({ statusCode: 400, statusMessage: error.message });
