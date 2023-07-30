@@ -7,7 +7,7 @@
             <NuxtLink to="/player">GIOCATORI</NuxtLink>
             <NuxtLink to="/team">SQUADRE</NuxtLink>
             <NuxtLink to="/calendar">CALENDARIO</NuxtLink>
-            <NuxtLink to="/championship">CAMPIONATI</NuxtLink>
+            <NuxtLink to="/championship">ASTA</NuxtLink>
         </div>
     </div>
 </template>

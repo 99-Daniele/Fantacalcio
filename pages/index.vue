@@ -1,3 +1,14 @@
 <template>
-    <h1>HOME</h1>
+    <div class="title">
+        FANTACALCIO
+    </div>
+    <div v-for="championship in championships">
+        <NuxtLink :to="'/championship/' + championship.Id">{{championship.Nome}}</NuxtLink> 
+    </div>
 </template>
+
+<script setup>
+
+    const { data: championships } = await useFetch('/api/championship')
+    
+</script>
