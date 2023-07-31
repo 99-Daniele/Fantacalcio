@@ -38,6 +38,11 @@ a{
     transition: 0.5s;
 }
 
+#icon{
+    height: 20px;
+    width: 20px;
+}
+
 #mark{
     margin-left: 80px;
     margin-top: 10px;

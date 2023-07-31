@@ -129,11 +129,6 @@
         width: 20px;
     }
 
-    #icon{
-        height: 20px;
-        width: 20px;
-    }
-
 </style>
 
 <script setup>

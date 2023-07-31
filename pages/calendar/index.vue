@@ -2,6 +2,11 @@
     <div class="title">
         Calendario
     </div>
+    <NuxtLink to="/calendar/grid">
+        <div class="link">
+            GRIGLIA PORTIERI <img src="~\assets\img\link.png" id="icon">
+        </div>
+    </NuxtLink>
     <div class="rounds-container" id="rounds-container">
         <div v-for="i in 38">
             <div class="round" @click="focusRound(i)" :id="'nr-' + i">
@@ -84,6 +89,22 @@
     #round-logo{
       height: 20px;
       max-width: 26px;
+    }
+
+    .link{
+        position: absolute;
+        top: 130px;
+        right: 120px;
+        border-radius: 8px;
+        border: solid 1px black;
+        padding: 4px;
+        font-weight: bold;
+        transition: .5s;
+    }
+
+    .link:hover{
+        box-shadow: 0 0 10px black;
+        transition: .5s;
     }
 
 </style>
