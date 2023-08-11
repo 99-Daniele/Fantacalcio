@@ -3,22 +3,7 @@ import { eventHandler, setResponseStatus, getQuery, createError, appendResponseH
 import { stringify, uneval } from 'file://C:/Fantacalcio/node_modules/devalue/index.js';
 import { joinURL, withoutTrailingSlash } from 'file://C:/Fantacalcio/node_modules/ufo/dist/index.mjs';
 import { renderToString } from 'file://C:/Fantacalcio/node_modules/vue/server-renderer/index.mjs';
-import { u as useNitroApp, a as useRuntimeConfig, g as getRouteRules } from './nitro/nitro-prerenderer.mjs';
-import 'file://C:/Fantacalcio/node_modules/node-fetch-native/dist/polyfill.mjs';
-import 'file://C:/Fantacalcio/node_modules/ofetch/dist/node.mjs';
-import 'file://C:/Fantacalcio/node_modules/destr/dist/index.mjs';
-import 'file://C:/Fantacalcio/node_modules/unenv/runtime/fetch/index.mjs';
-import 'file://C:/Fantacalcio/node_modules/hookable/dist/index.mjs';
-import 'file://C:/Fantacalcio/node_modules/scule/dist/index.mjs';
-import 'file://C:/Fantacalcio/node_modules/klona/dist/index.mjs';
-import 'file://C:/Fantacalcio/node_modules/defu/dist/defu.mjs';
-import 'file://C:/Fantacalcio/node_modules/ohash/dist/index.mjs';
-import 'file://C:/Fantacalcio/node_modules/unstorage/dist/index.mjs';
-import 'file://C:/Fantacalcio/node_modules/unstorage/drivers/fs.mjs';
-import 'file://C:/Fantacalcio/node_modules/radix3/dist/index.mjs';
-import 'node:fs';
-import 'node:url';
-import 'file://C:/Fantacalcio/node_modules/pathe/dist/index.mjs';
+import { a as useNitroApp, u as useRuntimeConfig, g as getRouteRules } from './nitro/nitro-prerenderer.mjs';
 
 function defineRenderHandler(handler) {
   return eventHandler(async (event) => {
@@ -53,10 +38,6 @@ function defineRenderHandler(handler) {
   });
 }
 
-const appRootId = "__nuxt";
-
-const appRootTag = "div";
-
 function buildAssetsDir() {
   return useRuntimeConfig().app.buildAssetsDir;
 }
@@ -67,6 +48,10 @@ function publicAssetsURL(...path) {
   const publicBase = useRuntimeConfig().app.cdnURL || useRuntimeConfig().app.baseURL;
   return path.length ? joinURL(publicBase, ...path) : publicBase;
 }
+
+const appRootId = "__nuxt";
+
+const appRootTag = "div";
 
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
@@ -319,5 +304,10 @@ function splitPayload(ssrContext) {
   };
 }
 
-export { renderer as default };
+const renderer$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: renderer
+});
+
+export { publicAssetsURL as p, renderer$1 as r };
 //# sourceMappingURL=renderer.mjs.map

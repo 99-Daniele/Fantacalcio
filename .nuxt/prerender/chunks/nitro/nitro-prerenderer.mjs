@@ -1,5 +1,5 @@
 globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import 'file://C:/Fantacalcio/node_modules/node-fetch-native/dist/polyfill.mjs';
-import { defineEventHandler, handleCacheHeaders, createEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseStatus, setResponseHeader, getRequestHeaders, createError, createApp, createRouter as createRouter$1, toNodeListener, fetchWithEvent, lazyEventHandler } from 'file://C:/Fantacalcio/node_modules/h3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, createEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseStatus, setResponseHeader, getRequestHeaders, createError, assertMethod, readBody, setCookie, createApp, createRouter as createRouter$1, toNodeListener, fetchWithEvent, lazyEventHandler } from 'file://C:/Fantacalcio/node_modules/h3/dist/index.mjs';
 import { createFetch as createFetch$1, Headers } from 'file://C:/Fantacalcio/node_modules/ofetch/dist/node.mjs';
 import destr from 'file://C:/Fantacalcio/node_modules/destr/dist/index.mjs';
 import { createCall, createFetch } from 'file://C:/Fantacalcio/node_modules/unenv/runtime/fetch/index.mjs';
@@ -41,7 +41,30 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "public": {}
+  "public": {
+    "supabase": {
+      "url": "https://ltdyvtatkzdpenvnrxls.supabase.co",
+      "key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx0ZHl2dGF0a3pkcGVudm5yeGxzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTAxODUxNjIsImV4cCI6MjAwNTc2MTE2Mn0.a2xyJMh9VAwbYabsq6--GYAPlC75Sb_Guk6Qnbn-0fY",
+      "client": {
+        "auth": {
+          "detectSessionInUrl": true,
+          "persistSession": true,
+          "autoRefreshToken": true
+        }
+      },
+      "redirect": false,
+      "cookies": {
+        "name": "sb",
+        "lifetime": 28800,
+        "domain": "",
+        "path": "/",
+        "sameSite": "lax"
+      }
+    }
+  },
+  "supabase": {
+    "serviceKey": ""
+  }
 };
 const ENV_PREFIX = "NITRO_";
 const ENV_PREFIX_ALT = _inlineRuntimeConfig.nitro.envPrefix ?? process.env.NITRO_ENV_PREFIX ?? "_";
@@ -374,9 +397,9 @@ function cloneWithProxy(obj, overrides) {
 }
 const cachedEventHandler = defineCachedEventHandler;
 
-const config = useRuntimeConfig();
+const config$1 = useRuntimeConfig();
 const _routeRulesMatcher = toRouteMatcher(
-  createRouter({ routes: config.nitro.routeRules })
+  createRouter({ routes: config$1.nitro.routeRules })
 );
 function createRouteRulesHandler() {
   return eventHandler((event) => {
@@ -523,47 +546,467 @@ const errorHandler = (async function errorhandler(error, event) {
 });
 
 const assets = {
-  "/_nuxt/entry.bbc96c86.css": {
-    "type": "text/css; charset=utf-8",
-    "etag": "\"2f5d-W2DSmmJdf9th/yDtl9PfPLBoCWE\"",
-    "mtime": "2023-07-24T08:30:08.452Z",
-    "size": 12125,
-    "path": "../../.output/public/_nuxt/entry.bbc96c86.css"
+  "/favicon.ico": {
+    "type": "image/vnd.microsoft.icon",
+    "etag": "\"d3b-ZLXTzgULTQmEHFzF/6MTVzS/5cs\"",
+    "mtime": "2023-08-11T14:26:16.552Z",
+    "size": 3387,
+    "path": "../../.output/public/favicon.ico"
   },
-  "/_nuxt/entry.ecc36c8a.js": {
+  "/logo/Atalanta.png": {
+    "type": "image/png",
+    "etag": "\"2dca-rhW1yE5ncREeQLo+y09iE2ctDhA\"",
+    "mtime": "2023-08-11T14:26:16.559Z",
+    "size": 11722,
+    "path": "../../.output/public/logo/Atalanta.png"
+  },
+  "/logo/Bologna.png": {
+    "type": "image/png",
+    "etag": "\"22fa-SvIapVq+cYUKlU+kZrwrJlVaEsQ\"",
+    "mtime": "2023-08-11T14:26:16.559Z",
+    "size": 8954,
+    "path": "../../.output/public/logo/Bologna.png"
+  },
+  "/logo/Cagliari.png": {
+    "type": "image/png",
+    "etag": "\"3dad-KOOP3WKzB6fPcSGh4SI81mqsK/w\"",
+    "mtime": "2023-08-11T14:26:16.559Z",
+    "size": 15789,
+    "path": "../../.output/public/logo/Cagliari.png"
+  },
+  "/logo/Empoli.png": {
+    "type": "image/png",
+    "etag": "\"33df-z0DYpSC9F34q5tasc4laHG4mAa0\"",
+    "mtime": "2023-08-11T14:26:16.559Z",
+    "size": 13279,
+    "path": "../../.output/public/logo/Empoli.png"
+  },
+  "/logo/Fiorentina.png": {
+    "type": "image/png",
+    "etag": "\"2447-E2oJBxujJmqjhEiUok+fGL4d3e4\"",
+    "mtime": "2023-08-11T14:26:16.562Z",
+    "size": 9287,
+    "path": "../../.output/public/logo/Fiorentina.png"
+  },
+  "/logo/Frosinone.png": {
+    "type": "image/png",
+    "etag": "\"3e88-VbA1yiz90eiGO9RSG5lm03JUa2U\"",
+    "mtime": "2023-08-11T14:26:16.562Z",
+    "size": 16008,
+    "path": "../../.output/public/logo/Frosinone.png"
+  },
+  "/logo/Genoa.png": {
+    "type": "image/png",
+    "etag": "\"1ee1-djlHPNesj+yQFQem8jaLJis7l88\"",
+    "mtime": "2023-08-11T14:26:16.562Z",
+    "size": 7905,
+    "path": "../../.output/public/logo/Genoa.png"
+  },
+  "/logo/Inter.png": {
+    "type": "image/png",
+    "etag": "\"2db9-gh52+BQBGt6ZJK6zX4wxG9Kixks\"",
+    "mtime": "2023-08-11T14:26:16.562Z",
+    "size": 11705,
+    "path": "../../.output/public/logo/Inter.png"
+  },
+  "/logo/Juventus.png": {
+    "type": "image/png",
+    "etag": "\"e60-ciQ/nludzFAztAuwv1rcYZznet4\"",
+    "mtime": "2023-08-11T14:26:16.562Z",
+    "size": 3680,
+    "path": "../../.output/public/logo/Juventus.png"
+  },
+  "/logo/Lazio.png": {
+    "type": "image/png",
+    "etag": "\"2126-WJclihHi2aSFBshlZG468sVBsio\"",
+    "mtime": "2023-08-11T14:26:16.562Z",
+    "size": 8486,
+    "path": "../../.output/public/logo/Lazio.png"
+  },
+  "/logo/Lecce.png": {
+    "type": "image/png",
+    "etag": "\"48ef-JOxydCRC6K/pAUPZ9OZbJ3b28gw\"",
+    "mtime": "2023-08-11T14:26:16.567Z",
+    "size": 18671,
+    "path": "../../.output/public/logo/Lecce.png"
+  },
+  "/logo/Milan.png": {
+    "type": "image/png",
+    "etag": "\"3020-UxfgyMb7Rf+ibcAqpMq29wkTLTY\"",
+    "mtime": "2023-08-11T14:26:16.567Z",
+    "size": 12320,
+    "path": "../../.output/public/logo/Milan.png"
+  },
+  "/logo/Monza.png": {
+    "type": "image/png",
+    "etag": "\"3e41-Z7s1zKJkY2NsxNkbsoW6q6dNnUQ\"",
+    "mtime": "2023-08-11T14:26:16.567Z",
+    "size": 15937,
+    "path": "../../.output/public/logo/Monza.png"
+  },
+  "/logo/Napoli.png": {
+    "type": "image/png",
+    "etag": "\"381d-QQkvXUgvdqvhkAHjY3sEGTZkBKY\"",
+    "mtime": "2023-08-11T14:26:16.567Z",
+    "size": 14365,
+    "path": "../../.output/public/logo/Napoli.png"
+  },
+  "/logo/Roma.png": {
+    "type": "image/png",
+    "etag": "\"3a84-OdmYsEug/vjdQ9AdvHhsXfu8X5U\"",
+    "mtime": "2023-08-11T14:26:16.567Z",
+    "size": 14980,
+    "path": "../../.output/public/logo/Roma.png"
+  },
+  "/logo/Salernitana.png": {
+    "type": "image/png",
+    "etag": "\"2fb4-kN5zWmTcOdwPuPI5BBU7udGDOQc\"",
+    "mtime": "2023-08-11T14:26:16.567Z",
+    "size": 12212,
+    "path": "../../.output/public/logo/Salernitana.png"
+  },
+  "/logo/Sassuolo.png": {
+    "type": "image/png",
+    "etag": "\"3935-rGoUFYHpjdMvq1cLg7EWeq1Slzg\"",
+    "mtime": "2023-08-11T14:26:16.572Z",
+    "size": 14645,
+    "path": "../../.output/public/logo/Sassuolo.png"
+  },
+  "/logo/Torino.png": {
+    "type": "image/png",
+    "etag": "\"3ae9-cMrQYfwAmpg9Kl6cDsCZZ//P36M\"",
+    "mtime": "2023-08-11T14:26:16.572Z",
+    "size": 15081,
+    "path": "../../.output/public/logo/Torino.png"
+  },
+  "/logo/Udinese.png": {
+    "type": "image/png",
+    "etag": "\"5ad4-s6gXdJrHospKmpNIGUoQ0J1XmgY\"",
+    "mtime": "2023-08-11T14:26:16.572Z",
+    "size": 23252,
+    "path": "../../.output/public/logo/Udinese.png"
+  },
+  "/logo/Verona.png": {
+    "type": "image/png",
+    "etag": "\"42bc-O7kU2ZClKMXcKmGExiOWvKCjc3I\"",
+    "mtime": "2023-08-11T14:26:16.572Z",
+    "size": 17084,
+    "path": "../../.output/public/logo/Verona.png"
+  },
+  "/font/AlloyInk.otf": {
+    "type": "font/otf",
+    "etag": "\"5888-Zr+f0EmbUy7tns0Jj0s75A6Ypt4\"",
+    "mtime": "2023-08-11T14:26:16.557Z",
+    "size": 22664,
+    "path": "../../.output/public/font/AlloyInk.otf"
+  },
+  "/font/AlloyInk.ttf": {
+    "type": "font/ttf",
+    "etag": "\"5c5c-d4perZgl4Sg3nezNMzEJGeGmDTg\"",
+    "mtime": "2023-08-11T14:26:16.557Z",
+    "size": 23644,
+    "path": "../../.output/public/font/AlloyInk.ttf"
+  },
+  "/_nuxt/default.9faa129a.js": {
     "type": "application/javascript",
-    "etag": "\"30902-wbGHZnujNzbyNClDctWlsQOnIKQ\"",
-    "mtime": "2023-07-24T08:30:08.446Z",
-    "size": 198914,
-    "path": "../../.output/public/_nuxt/entry.ecc36c8a.js"
+    "etag": "\"14c5-fBEb23AMJ1cHh81769kX/Xv5dvc\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 5317,
+    "path": "../../.output/public/_nuxt/default.9faa129a.js"
+  },
+  "/_nuxt/entry.c86a6b1a.js": {
+    "type": "application/javascript",
+    "etag": "\"400e6-Z0m8jxHQb7TuFh0PghH9zXd+pHg\"",
+    "mtime": "2023-08-11T14:41:06.374Z",
+    "size": 262374,
+    "path": "../../.output/public/_nuxt/entry.c86a6b1a.js"
   },
   "/_nuxt/error-404.23f2309d.css": {
     "type": "text/css; charset=utf-8",
     "etag": "\"e2e-ivsbEmi48+s9HDOqtrSdWFvddYQ\"",
-    "mtime": "2023-07-24T08:30:08.451Z",
+    "mtime": "2023-08-11T14:41:06.363Z",
     "size": 3630,
     "path": "../../.output/public/_nuxt/error-404.23f2309d.css"
   },
-  "/_nuxt/error-404.60c761e7.js": {
+  "/_nuxt/error-404.96ba5040.js": {
     "type": "application/javascript",
-    "etag": "\"197d-bS+Kyt6jbqrtmnuyIGcyoHAlM/c\"",
-    "mtime": "2023-07-24T08:30:08.451Z",
-    "size": 6525,
-    "path": "../../.output/public/_nuxt/error-404.60c761e7.js"
+    "etag": "\"8d2-pc5IdKeOOG8Z85LzxEh0qEp/kn0\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 2258,
+    "path": "../../.output/public/_nuxt/error-404.96ba5040.js"
+  },
+  "/_nuxt/error-500.1f941bec.js": {
+    "type": "application/javascript",
+    "etag": "\"756-V1f2B6hYgzkhTkHnuBJMM9sIaEo\"",
+    "mtime": "2023-08-11T14:41:06.369Z",
+    "size": 1878,
+    "path": "../../.output/public/_nuxt/error-500.1f941bec.js"
   },
   "/_nuxt/error-500.aa16ed4d.css": {
     "type": "text/css; charset=utf-8",
     "etag": "\"79e-7j4Tsx89siDo85YoIs0XqsPWmPI\"",
-    "mtime": "2023-07-24T08:30:08.451Z",
+    "mtime": "2023-08-11T14:41:06.363Z",
     "size": 1950,
     "path": "../../.output/public/_nuxt/error-500.aa16ed4d.css"
   },
-  "/_nuxt/error-500.f95f4297.js": {
+  "/_nuxt/fetch.9ef51641.js": {
     "type": "application/javascript",
-    "etag": "\"756-7BHxQ/iySK5DEMJocX4zsQoWv7Y\"",
-    "mtime": "2023-07-24T08:30:08.447Z",
-    "size": 1878,
-    "path": "../../.output/public/_nuxt/error-500.f95f4297.js"
+    "etag": "\"d24-exVJ1slU882n8FKyAwlrsg2Sop4\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 3364,
+    "path": "../../.output/public/_nuxt/fetch.9ef51641.js"
+  },
+  "/_nuxt/index.01a4c432.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"4d-RT7nbhlo33ctUgBktW/X0TM4awc\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 77,
+    "path": "../../.output/public/_nuxt/index.01a4c432.css"
+  },
+  "/_nuxt/index.0c587825.js": {
+    "type": "application/javascript",
+    "etag": "\"a6b-p7CAD2VoWUTCB7+nzN0/1teYF0o\"",
+    "mtime": "2023-08-11T14:41:06.369Z",
+    "size": 2667,
+    "path": "../../.output/public/_nuxt/index.0c587825.js"
+  },
+  "/_nuxt/index.19eecba7.js": {
+    "type": "application/javascript",
+    "etag": "\"792-jXX09OxOHTl4EoZQJYZEHcHhAyY\"",
+    "mtime": "2023-08-11T14:41:06.369Z",
+    "size": 1938,
+    "path": "../../.output/public/_nuxt/index.19eecba7.js"
+  },
+  "/_nuxt/index.2e625b74.js": {
+    "type": "application/javascript",
+    "etag": "\"45b-DXifneOBi9+y48zgk+r8ocTtOOQ\"",
+    "mtime": "2023-08-11T14:41:06.369Z",
+    "size": 1115,
+    "path": "../../.output/public/_nuxt/index.2e625b74.js"
+  },
+  "/_nuxt/index.2ead7b89.js": {
+    "type": "application/javascript",
+    "etag": "\"8dc-Mn7yCNHwV0rQfKqzGyjkJDASAOM\"",
+    "mtime": "2023-08-11T14:41:06.367Z",
+    "size": 2268,
+    "path": "../../.output/public/_nuxt/index.2ead7b89.js"
+  },
+  "/_nuxt/index.577e77d8.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"1ef-g9hLBCICoRWuYPdZBgb/NkhhIVs\"",
+    "mtime": "2023-08-11T14:41:06.361Z",
+    "size": 495,
+    "path": "../../.output/public/_nuxt/index.577e77d8.css"
+  },
+  "/_nuxt/index.5c42a831.js": {
+    "type": "application/javascript",
+    "etag": "\"b2b-YWcGcF8nJr2HXsAbTLS5eBP2mO8\"",
+    "mtime": "2023-08-11T14:41:06.369Z",
+    "size": 2859,
+    "path": "../../.output/public/_nuxt/index.5c42a831.js"
+  },
+  "/_nuxt/index.5fcc54c9.js": {
+    "type": "application/javascript",
+    "etag": "\"2001-Yw0BDos5wnQqImVMmrxwyb0gLS4\"",
+    "mtime": "2023-08-11T14:41:06.369Z",
+    "size": 8193,
+    "path": "../../.output/public/_nuxt/index.5fcc54c9.js"
+  },
+  "/_nuxt/index.650fd38f.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"84-9pyVTWRqfkhCa0Po24HR1G7h4fg\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 132,
+    "path": "../../.output/public/_nuxt/index.650fd38f.css"
+  },
+  "/_nuxt/index.7a0238d8.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"4d-NMaNmPN30tPHe3s9L/DM8ww81TE\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 77,
+    "path": "../../.output/public/_nuxt/index.7a0238d8.css"
+  },
+  "/_nuxt/index.93a669ac.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"1ba-Cp4yYYqeZqH3zdgVnDYs97IgECs\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 442,
+    "path": "../../.output/public/_nuxt/index.93a669ac.css"
+  },
+  "/_nuxt/index.9f94854d.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"84-Ecj/gx3s9wJduHVSgxTekgn+tdY\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 132,
+    "path": "../../.output/public/_nuxt/index.9f94854d.css"
+  },
+  "/_nuxt/index.c95e690e.js": {
+    "type": "application/javascript",
+    "etag": "\"242-Ixa97s6dbF/1m6JLdSJj01xrNck\"",
+    "mtime": "2023-08-11T14:41:06.369Z",
+    "size": 578,
+    "path": "../../.output/public/_nuxt/index.c95e690e.js"
+  },
+  "/_nuxt/index.cb779d0c.js": {
+    "type": "application/javascript",
+    "etag": "\"949-zn0cQ0gtBGsCVOUKQ0LcmdgW0pw\"",
+    "mtime": "2023-08-11T14:41:06.371Z",
+    "size": 2377,
+    "path": "../../.output/public/_nuxt/index.cb779d0c.js"
+  },
+  "/_nuxt/index.d72a8cb4.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"30d-O0Bvk1cXMlZoQZYFusTu/wOG6+0\"",
+    "mtime": "2023-08-11T14:41:06.341Z",
+    "size": 781,
+    "path": "../../.output/public/_nuxt/index.d72a8cb4.css"
+  },
+  "/_nuxt/index.d9911f9f.js": {
+    "type": "application/javascript",
+    "etag": "\"b2b-3a3RnC0iaYdCrjypD5X+2ng77tY\"",
+    "mtime": "2023-08-11T14:41:06.369Z",
+    "size": 2859,
+    "path": "../../.output/public/_nuxt/index.d9911f9f.js"
+  },
+  "/_nuxt/index.f9d62110.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"4d-eo5vejSq7tZKOKxK8SVgTKAJe8k\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 77,
+    "path": "../../.output/public/_nuxt/index.f9d62110.css"
+  },
+  "/_nuxt/nuxt-link.0a4ba090.js": {
+    "type": "application/javascript",
+    "etag": "\"10f7-bw6+AWz8OHTL0fQ/f6V4WET8HxE\"",
+    "mtime": "2023-08-11T14:41:06.369Z",
+    "size": 4343,
+    "path": "../../.output/public/_nuxt/nuxt-link.0a4ba090.js"
+  },
+  "/_nuxt/PlayerCard.a664555b.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"2a1-/yxLj8hsu8Np8K/+6KO5+bA9hhA\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 673,
+    "path": "../../.output/public/_nuxt/PlayerCard.a664555b.css"
+  },
+  "/_nuxt/PlayerCard.b0dfc2df.js": {
+    "type": "application/javascript",
+    "etag": "\"4a7-g1wxSABo/xK67/Degl97Wf2G0sI\"",
+    "mtime": "2023-08-11T14:41:06.371Z",
+    "size": 1191,
+    "path": "../../.output/public/_nuxt/PlayerCard.b0dfc2df.js"
+  },
+  "/_nuxt/_id_.10be297a.js": {
+    "type": "application/javascript",
+    "etag": "\"25b-qxrYIF32wLkpiK89p481RR25qag\"",
+    "mtime": "2023-08-11T14:41:06.369Z",
+    "size": 603,
+    "path": "../../.output/public/_nuxt/_id_.10be297a.js"
+  },
+  "/_nuxt/_id_.12bb695b.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"84-xZxZATzQZP/TlpHahbeDGQo3q5s\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 132,
+    "path": "../../.output/public/_nuxt/_id_.12bb695b.css"
+  },
+  "/_nuxt/_id_.1e76e1c0.js": {
+    "type": "application/javascript",
+    "etag": "\"ade-p1a9n4wy5baIh0gfd9QxX0r7Fec\"",
+    "mtime": "2023-08-11T14:41:06.369Z",
+    "size": 2782,
+    "path": "../../.output/public/_nuxt/_id_.1e76e1c0.js"
+  },
+  "/_nuxt/_id_.2264961a.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"4d-clhh04KqPOc1Vb1XOGAAwJfAzGQ\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 77,
+    "path": "../../.output/public/_nuxt/_id_.2264961a.css"
+  },
+  "/_nuxt/_id_.231c3758.js": {
+    "type": "application/javascript",
+    "etag": "\"113a-y21F1QMoIu59P+jSns3RUcZbxH4\"",
+    "mtime": "2023-08-11T14:41:06.371Z",
+    "size": 4410,
+    "path": "../../.output/public/_nuxt/_id_.231c3758.js"
+  },
+  "/_nuxt/_id_.2d6891b8.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"4d-QxSis7knVkZe7axRHjkobMhRS4c\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 77,
+    "path": "../../.output/public/_nuxt/_id_.2d6891b8.css"
+  },
+  "/_nuxt/_id_.328f9a53.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"c7-87a22GBwSROVqX8YuEb+P+6X/00\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 199,
+    "path": "../../.output/public/_nuxt/_id_.328f9a53.css"
+  },
+  "/_nuxt/_id_.42f2ac69.js": {
+    "type": "application/javascript",
+    "etag": "\"113a-Rdi7y0Cxv9+UJiPfLXxhP4cHz74\"",
+    "mtime": "2023-08-11T14:41:06.369Z",
+    "size": 4410,
+    "path": "../../.output/public/_nuxt/_id_.42f2ac69.js"
+  },
+  "/_nuxt/_id_.4409bdbd.js": {
+    "type": "application/javascript",
+    "etag": "\"627-vbTG6iHXyc575pdTWlKkBj7AoTY\"",
+    "mtime": "2023-08-11T14:41:06.371Z",
+    "size": 1575,
+    "path": "../../.output/public/_nuxt/_id_.4409bdbd.js"
+  },
+  "/_nuxt/_id_.5015a194.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"84-mRDW4h7kNHoUiI/XPN+KAjLSUhg\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 132,
+    "path": "../../.output/public/_nuxt/_id_.5015a194.css"
+  },
+  "/_nuxt/_id_.58a5dc7a.js": {
+    "type": "application/javascript",
+    "etag": "\"c00-j5jxWG7F5OUAj+bRIUUhJWWELMo\"",
+    "mtime": "2023-08-11T14:41:06.369Z",
+    "size": 3072,
+    "path": "../../.output/public/_nuxt/_id_.58a5dc7a.js"
+  },
+  "/_nuxt/_id_.6d2ad344.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"328-ayW9KCITYrMHLtSu7kaWwOZ09rs\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 808,
+    "path": "../../.output/public/_nuxt/_id_.6d2ad344.css"
+  },
+  "/_nuxt/_id_.9b3104dd.js": {
+    "type": "application/javascript",
+    "etag": "\"f22-Y0A0ZLx31Sd+gQ9cfnYYg0r3zM4\"",
+    "mtime": "2023-08-11T14:41:06.371Z",
+    "size": 3874,
+    "path": "../../.output/public/_nuxt/_id_.9b3104dd.js"
+  },
+  "/_nuxt/_id_.a3046f57.js": {
+    "type": "application/javascript",
+    "etag": "\"5cb7-ZO7tItV7/dRQB7x04XuUxWZJEFY\"",
+    "mtime": "2023-08-11T14:41:06.369Z",
+    "size": 23735,
+    "path": "../../.output/public/_nuxt/_id_.a3046f57.js"
+  },
+  "/_nuxt/_id_.adf66726.js": {
+    "type": "application/javascript",
+    "etag": "\"301-bhyCYcBLs8JOTTTNTynn4zv4V4o\"",
+    "mtime": "2023-08-11T14:41:06.367Z",
+    "size": 769,
+    "path": "../../.output/public/_nuxt/_id_.adf66726.js"
+  },
+  "/_nuxt/_id_.e8706182.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"247-Lq49ljX55Yh6pNV2BCvwKv2a0wk\"",
+    "mtime": "2023-08-11T14:41:06.363Z",
+    "size": 583,
+    "path": "../../.output/public/_nuxt/_id_.e8706182.css"
   }
 };
 
@@ -665,10 +1108,107 @@ const _f4b49z = eventHandler((event) => {
   return readAsset(id);
 });
 
-const _lazy_zr3rz1 = () => import('../renderer.mjs');
+const config = useRuntimeConfig().public;
+const _Y5kF7b = defineEventHandler(async (event) => {
+  assertMethod(event, "POST");
+  const body = await readBody(event);
+  const cookieOptions = config.supabase.cookies;
+  const { event: signEvent, session } = body;
+  if (!event) {
+    throw new Error("Auth event missing!");
+  }
+  if (signEvent === "SIGNED_IN" || signEvent === "TOKEN_REFRESHED") {
+    if (!session) {
+      throw new Error("Auth session missing!");
+    }
+    setCookie(
+      event,
+      `${cookieOptions.name}-access-token`,
+      session.access_token,
+      {
+        domain: cookieOptions.domain,
+        maxAge: cookieOptions.lifetime ?? 0,
+        path: cookieOptions.path,
+        sameSite: cookieOptions.sameSite
+      }
+    );
+    setCookie(event, `${cookieOptions.name}-refresh-token`, session.refresh_token, {
+      domain: cookieOptions.domain,
+      maxAge: cookieOptions.lifetime ?? 0,
+      path: cookieOptions.path,
+      sameSite: cookieOptions.sameSite
+    });
+    if (session.provider_token) {
+      setCookie(event, `${cookieOptions.name}-provider-token`, session.provider_token, {
+        domain: cookieOptions.domain,
+        maxAge: cookieOptions.lifetime ?? 0,
+        path: cookieOptions.path,
+        sameSite: cookieOptions.sameSite
+      });
+    }
+    if (session.provider_refresh_token) {
+      setCookie(event, `${cookieOptions.name}-provider-refresh-token`, session.provider_refresh_token, {
+        domain: cookieOptions.domain,
+        maxAge: cookieOptions.lifetime ?? 0,
+        path: cookieOptions.path,
+        sameSite: cookieOptions.sameSite
+      });
+    }
+  }
+  if (signEvent === "SIGNED_OUT") {
+    setCookie(event, `${cookieOptions.name}-access-token`, "", {
+      maxAge: -1,
+      path: cookieOptions.path
+    });
+    setCookie(event, `${cookieOptions.name}-refresh-token`, "", {
+      maxAge: -1,
+      path: cookieOptions.path
+    });
+  }
+  return "auth cookie set";
+});
+
+const _lazy_ZrU7H7 = () => import('../index.get.mjs');
+const _lazy_JWxj3n = () => import('../index.get2.mjs');
+const _lazy_ZTF9FM = () => import('../_id_.mjs');
+const _lazy_vxFONV = () => import('../_id_2.mjs');
+const _lazy_ZY0JsW = () => import('../index.get3.mjs');
+const _lazy_SeiBdb = () => import('../_id_3.mjs');
+const _lazy_EbhRfO = () => import('../index.get4.mjs');
+const _lazy_EPGZw8 = () => import('../_id_4.mjs');
+const _lazy_lXCTV1 = () => import('../index.get5.mjs');
+const _lazy_I5At9i = () => import('../_id_5.mjs');
+const _lazy_lNOqij = () => import('../index.get6.mjs');
+const _lazy_brE4Sl = () => import('../_id_6.mjs');
+const _lazy_wWxOT8 = () => import('../index.get7.mjs');
+const _lazy_6uuyfW = () => import('../index.get8.mjs');
+const _lazy_x5aTfJ = () => import('../_id_7.mjs');
+const _lazy_FvXHLm = () => import('../_id_8.mjs');
+const _lazy_CkbKHV = () => import('../_id_9.mjs');
+const _lazy_RXYciV = () => import('../index.get9.mjs');
+const _lazy_zr3rz1 = () => import('../renderer.mjs').then(function (n) { return n.r; });
 
 const handlers = [
   { route: '', handler: _f4b49z, lazy: false, middleware: true, method: undefined },
+  { route: '/api/calendar/grid', handler: _lazy_ZrU7H7, lazy: true, middleware: false, method: "get" },
+  { route: '/api/calendar', handler: _lazy_JWxj3n, lazy: true, middleware: false, method: "get" },
+  { route: '/api/calendar/team/:id', handler: _lazy_ZTF9FM, lazy: true, middleware: false, method: undefined },
+  { route: '/api/championship/:id', handler: _lazy_vxFONV, lazy: true, middleware: false, method: undefined },
+  { route: '/api/championship', handler: _lazy_ZY0JsW, lazy: true, middleware: false, method: "get" },
+  { route: '/api/player/:id', handler: _lazy_SeiBdb, lazy: true, middleware: false, method: undefined },
+  { route: '/api/player/A', handler: _lazy_EbhRfO, lazy: true, middleware: false, method: "get" },
+  { route: '/api/player/A/slot/:id', handler: _lazy_EPGZw8, lazy: true, middleware: false, method: undefined },
+  { route: '/api/player/C', handler: _lazy_lXCTV1, lazy: true, middleware: false, method: "get" },
+  { route: '/api/player/C/slot/:id', handler: _lazy_I5At9i, lazy: true, middleware: false, method: undefined },
+  { route: '/api/player/D', handler: _lazy_lNOqij, lazy: true, middleware: false, method: "get" },
+  { route: '/api/player/D/slot/:id', handler: _lazy_brE4Sl, lazy: true, middleware: false, method: undefined },
+  { route: '/api/player', handler: _lazy_wWxOT8, lazy: true, middleware: false, method: "get" },
+  { route: '/api/player/P', handler: _lazy_6uuyfW, lazy: true, middleware: false, method: "get" },
+  { route: '/api/player/P/slot/:id', handler: _lazy_x5aTfJ, lazy: true, middleware: false, method: undefined },
+  { route: '/api/squad/:id', handler: _lazy_FvXHLm, lazy: true, middleware: false, method: undefined },
+  { route: '/api/team/:id', handler: _lazy_CkbKHV, lazy: true, middleware: false, method: undefined },
+  { route: '/api/team', handler: _lazy_RXYciV, lazy: true, middleware: false, method: "get" },
+  { route: '/api/_supabase/session', handler: _Y5kF7b, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_zr3rz1, lazy: true, middleware: false, method: undefined }
 ];
 
@@ -742,5 +1282,5 @@ const useNitroApp = () => nitroApp;
 const localFetch = nitroApp.localFetch;
 trapUnhandledNodeErrors();
 
-export { useRuntimeConfig as a, getRouteRules as g, localFetch as l, useNitroApp as u };
+export { useNitroApp as a, getRouteRules as g, localFetch as l, useRuntimeConfig as u };
 //# sourceMappingURL=nitro-prerenderer.mjs.map
