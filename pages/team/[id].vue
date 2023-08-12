@@ -4,6 +4,11 @@
     </div>
     <input id="search" type="text" v-model="search" placeholder="Search player.." autocomplete="off"/>
     <img :src="'/logo/' + team + '.png'" id="logo">
+    <div class="team-container">
+        <div v-for="team in teams">
+            <NuxtLink :to="'/team/' + team.Nome"><img :src="'/logo/' + team.Nome + '.png'" id="calendar-logo"></NuxtLink>
+        </div>
+    </div>
     <div class="card-container">
         <div v-for="player in searchedPlayers">
             <NuxtLink :to='"/player/" + player.Id'><PlayerCard :name="player.Nome" :squad="player.team.Nome" :role="player.Ruolo" :id="player.Id" :color1="player.team.color1" :color2="player.team.color2" :rate="player.rate" :slot="player.slot" :cost="player.cost"/></NuxtLink>
@@ -34,6 +39,12 @@
         top: 120px;
         right: 120px;
     }
+    
+    .team-container{
+        margin-top: 60px;
+        margin-bottom: 0px;
+        width: 1220px;
+    }
 
 </style>
 
@@ -45,6 +56,7 @@
 
     const route = useRoute()
     const team = route.params.id
+    const { data: teams } = await useFetch('/api/team')
     const { data: players } = await useFetch('/api/team/' + team)
 
     const searchedPlayers = computed(() => {

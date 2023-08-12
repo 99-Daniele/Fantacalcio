@@ -3,15 +3,14 @@ import { serverSupabaseClient } from '#supabase/server';
 export default defineEventHandler(async (event) => {
 
   const client = serverSupabaseClient(event);
-  const team = event.context.params.id;
+  const team = event.context.params.id
 
-  const {data, error} = await client
+  const { data, error } = await client
     .from('calendar')
-    .select('homeTeam, awayTeam, round')
-    .or('homeTeam.eq.' + team + ',awayTeam.eq.' + team)
-    .order('round')
-    .neq('round', 0) 
-  
+    .select('*')
+    .eq('homeTeam', team)
+    .order('awayTeam'); 
+   
   if (error) {
     throw createError({ statusCode: 400, statusMessage: error.message });
   }

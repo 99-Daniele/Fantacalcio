@@ -1,7 +1,12 @@
 <template>
     <div class="title">
-        Griglia Portieri
+        {{t}}
     </div>
+    <NuxtLink to="/calendar/grid">
+        <div class="link">
+            GRIGLIA PORTIERI <img src="~\assets\img\link.png" id="icon">
+        </div>
+    </NuxtLink>
     <div class="team-container">
         <div v-for="team in teams">
             <NuxtLink :to="'/calendar/grid/' + team.Nome"><img :src="'/logo/' + team.Nome + '.png'" id="calendar-logo"></NuxtLink>
@@ -16,10 +21,20 @@
                 </th>
             </tr>
             <tr v-for="gridTeam in grid">
-                <th><b>{{gridTeam[0].homeTeam.substring(0,3)}}</b></th>
-                <th v-for="game in gridTeam">
+                <th v-if="gridTeam[0].homeTeam == t" style="color:white; background-color: black;"><b>{{gridTeam[0].homeTeam.substring(0,3)}}</b></th>
+                <th v-else><b>{{gridTeam[0].homeTeam.substring(0,3)}}</b></th>
+                <th v-for="game in gridTeam" v-if="gridTeam[0].homeTeam == t" style="background-color: black;">
                     <span v-if="game.round == 0"></span>
-                    <span v-else-if="game.totDif < 0" style="color:red">
+                    <span v-else-if="game.totDif < 0" style="color:red;">
+                        <b>{{ game.totDif }}</b>
+                    </span>
+                    <span v-else style="color:green">
+                        <b>{{ game.totDif }}</b>
+                    </span>
+                </th>
+                <th v-for="game in gridTeam" v-else>
+                    <span v-if="game.round == 0"></span>
+                    <span v-else-if="game.totDif < 0" style="color:red;">
                         {{ game.totDif }}
                     </span>
                     <span v-else style="color:green">
@@ -34,7 +49,7 @@
                     MIGLIORI COPPIE
                 </div>
                 <div v-for="couple in best" style="border-top: solid 1px black;">
-                    {{ couple.homeTeam }} - {{ couple.awayTeam }}: <b>{{ couple.totDif }}</b>
+                    {{ couple.homeTeam }} - {{ couple.awayTeam }}: <b style="color:green">{{ couple.totDif }}</b>
                 </div>
             </div>
             <div class="list-container">
@@ -42,7 +57,7 @@
                     PEGGIORI COPPIE
                 </div>
                 <div v-for="couple in worst" style="border-top: solid 1px black;">
-                    {{ couple.homeTeam }} - {{ couple.awayTeam }}: <b>{{ couple.totDif }}</b>
+                    {{ couple.homeTeam }} - {{ couple.awayTeam }}: <b style="color:red">{{ couple.totDif }}</b>
                 </div>
             </div>
         </div>
@@ -89,17 +104,32 @@
         margin-bottom: 20px;
     }
 
+    .link{
+        position: absolute;
+        top: 80px;
+        right: 145px;
+        border-radius: 8px;
+        border: solid 1px black;
+        padding: 4px;
+        font-weight: bold;
+        transition: .5s;
+    }
+
 </style>
 
 <script setup>
 
+    
+    const route = useRoute()
+    const t = route.params.id
     const { data: teams} = await useFetch('/api/team')
     const { data: calendar } = await useFetch('/api/calendar/grid')
+    const { data: teamCalendar } = await useFetch('/api/calendar/grid/' + t)
 
     const grid = [];
 
-    let best = calendar.value.slice();
-    let worst = calendar.value.slice();
+    let best = teamCalendar.value.slice();
+    let worst = teamCalendar.value.slice();
 
     best = best.sort((a, b) => b.totDif - a.totDif).slice(0, 5);
     worst = worst.sort((a, b) => a.totDif - b.totDif).slice(0, 5);
