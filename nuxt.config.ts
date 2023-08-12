@@ -10,7 +10,6 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/supabase'],
   ssr: true,
   app: {
-    baseURL: '/Fantacalcio/',
     head: {
       title: 'Fantacalcio',
       link: [{ rel: 'icon', type: 'image/png', href: '/favicon.ico' }],
