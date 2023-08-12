@@ -57,6 +57,9 @@ declare module 'nitropack' {
     '/api/team': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/team/index.get').default>>>>
     }
+    '/__nuxt_error': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/renderer').default>>>>
+    }
     '/api/_supabase/session': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/@nuxtjs/supabase/dist/runtime/server/api/session').default>>>>
     }
