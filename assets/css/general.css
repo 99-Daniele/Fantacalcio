@@ -44,7 +44,7 @@ a{
 }
 
 #mark{
-    margin-left: 80px;
+    margin-left: 120px;
     margin-top: 10px;
     width: 40px;
     height: 40px;
@@ -399,4 +399,55 @@ a{
 #calendar-logo:hover{
     filter: drop-shadow(0 0 5px black);
     transition: 0.5s;
+}
+
+.small-container{
+    border: solid 1px black;
+    width: 160px;
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+    transition: 0.5s;
+    background-color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.small-container:hover{
+    filter: drop-shadow(0 0 5px black);
+    transition: 0.5s;
+}
+
+.squad-container{
+    display: flex;
+    gap: 32px;
+}
+
+.hidden-container{
+    border: solid 1px black;
+    width: 200px;
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    filter: drop-shadow(0 0 5px black);
+    z-index: 1;
+    position: absolute;
+    top: 200px;
+    left: 600px;
+    visibility: hidden;
+}
+
+.squad-name-container{
+    font-weight: bold;
+    font-size: 22px;
+    width: 100%;
+    text-align: center;
+}
+
+.player-name-container{
+    font-size: 16px;
+    font-weight: 400;
+    width: 100%;
 }

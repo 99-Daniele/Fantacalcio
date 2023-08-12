@@ -3,7 +3,11 @@
         FANTACALCIO
     </div>
     <div v-for="championship in championships">
-        <NuxtLink :to="'/championship/' + championship.Id">{{championship.Nome}}</NuxtLink> 
+        <NuxtLink :to="'/championship/' + championship.Id">
+            <div class="small-container">
+                {{championship.Nome}}
+            </div>
+        </NuxtLink> 
     </div>
 </template>
 

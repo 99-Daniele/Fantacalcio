@@ -54,11 +54,17 @@ declare module 'nitropack' {
     '/api/squad/:id': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/squad/[id]').default>>>>
     }
+    '/api/squad/createSquad': {
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/squad/createSquad.post').default>>>>
+    }
     '/api/team/:id': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/team/[id]').default>>>>
     }
     '/api/team': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/team/index.get').default>>>>
+    }
+    '/__nuxt_error': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/renderer').default>>>>
     }
     '/api/_supabase/session': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../node_modules/@nuxtjs/supabase/dist/runtime/server/api/session').default>>>>
