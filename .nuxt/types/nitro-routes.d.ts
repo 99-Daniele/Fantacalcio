@@ -18,6 +18,9 @@ declare module 'nitropack' {
     '/api/championship/:id': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/championship/[id]').default>>>>
     }
+    '/api/championship/createChampionship': {
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/championship/createChampionship.post').default>>>>
+    }
     '/api/championship': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/championship/index.get').default>>>>
     }

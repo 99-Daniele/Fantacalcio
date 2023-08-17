@@ -1,6 +1,6 @@
 <template>
     <h1>{{ squads[0].championship.Nome }}</h1>
-    <div class="squad-container">
+    <div class="container">
         <div v-for="squad in squads">
             <NuxtLink :to="'/squad/' + squad.squadId">
                 <div class="small-container">
@@ -23,23 +23,12 @@
         <input type = "text" id = "squadName" v-model="name" autocomplete="off">
         <label for="playerName">Inserisci nome giocatore:</label>
         <input type = "text" id = "playerName" v-model="name" autocomplete="off">
-        <div id="submit" @click="createSquad()">Crea squadra</div>
+        <div id="submit" @click="createChamp()">Crea squadra</div>
     </div>
     <div class="goBackButton" @click="$router.go(-1)">TORNA INDIETRO</div>
 </template>
 
 <style scoped>
-
-    #exit{
-        font-weight: bold;
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        border: solid 1px black;
-        border-radius: 50%;
-        width: 18px;
-        cursor: pointer;
-    }
 
     #squadName{
         margin-bottom: 24px;
@@ -49,17 +38,6 @@
     #playerName{
         margin-bottom: 24px;
         border-radius: 8px;
-    }
-
-    #submit{
-        padding: 10px;
-        font-size: 16px;
-        border: solid 1px black;
-        border-radius: 8px;
-        width: fit-content;
-        margin-left: 48px;
-        background-color: white;
-        cursor: pointer;
     }
 
 </style>
