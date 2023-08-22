@@ -1,22 +1,62 @@
 <template>
     <div class="title">
-        {{ squads[0].championship.Nome }}
+        {{ champ.Nome }}
     </div>
+    <input id="search" type="text" v-model="search" placeholder="Search player.." autocomplete="off"/>
     <div class="container">
-        <div v-for="squad in squads">
-            <NuxtLink :to="'/squad/' + squad.squadId">
-                <div class="small-container">
-                    <div class="squad-name-container">
-                        {{ squad.Nome }}
+        <div v-for="squad in champ.squad">
+            <div class="mini-container">
+                <div class="squad-name-container">
+                    {{ squad.Nome }}
+                </div>
+            </div>
+            <div class="squad-list">
+                <div class="role-list">
+                    <div v-for="i in 3">
+                        <div id="circle" style="background-color: orange;">
+                            P
+                        </div> 
                     </div>
-                    <div class="player-name-container">
-                        {{ squad.Giocatore }}
+                    <div v-for="i in 8">
+                        <div id="circle" style="background-color: #47C6EF;">
+                            D
+                        </div> 
+                    </div>
+                    <div v-for="i in 8">
+                        <div id="circle" style="background-color: rgb(92, 255, 47);">
+                            C
+                        </div> 
+                    </div>
+                    <div v-for="i in 6">
+                        <div id="circle" style="background-color: red;">
+                            A
+                        </div> 
                     </div>
                 </div>
-            </NuxtLink>
+                <div class="player-list">
+                    <div v-for="p in squad.squadPlayers">
+                        <div class="player-container">
+                            {{ p.player.Nome }}
+                        </div>
+                    </div>
+                </div>
+                <div class="rate-list">
+                    <div v-for="p in squad.squadPlayers">
+                        <div class="rate-container">
+                            {{ p.player.rate }}
+                        </div>
+                    </div>
+                </div>
+                <div class="cost-list">
+                    <div v-for="p in squad.squadPlayers">
+                        <div class="cost-container">
+                            {{ p.cost }}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="goBackButton" @click="$router.go(-1)">TORNA INDIETRO</div>
 </template>
 
 <style scoped>
@@ -31,13 +71,28 @@
         border-radius: 8px;
     }
 
+    .container{
+        gap: 8px
+    }
+
+    .squad-name-container{
+        font-size: 16px;
+    }
+
+    #circle{
+        border-radius: 50%;
+        width: 18px;
+        color: white;
+        margin-top: 2px;
+    }
+
 </style>
 
 <script setup>
 
     const route = useRoute()
     const id = route.params.id
-    const { data: squads } = await useFetch('/api/championship/' + id)
+    const { data: champ } = await useFetch('/api/championship/' + id)
     
 </script>
 

@@ -423,6 +423,21 @@ a{
     transition: 0.5s;
 }
 
+.mini-container{
+    border: solid 1px black;
+    width: 120px;
+    border-radius: 8px;
+    text-align: center;
+    padding: 4px;
+    font-weight: bold;
+}
+
+.role-list{
+    text-align: center;
+    padding: 0 4px;
+    font-weight: bold;
+}
+
 .container{
     display: flex;
     gap: 32px;
@@ -477,4 +492,41 @@ a{
     margin-left: 48px;
     background-color: white;
     cursor: pointer;
+}
+
+.squad-list{
+    display: flex;
+    margin-top: 4px;
+}
+
+.player-container{
+    border: solid 1px black;
+    width: 60px;
+    border-radius: 8px;
+    text-align: center;
+    padding: 2px;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.rate-container{
+    border: solid 1px black;
+    width: 12px;
+    border-radius: 8px;
+    text-align: center;
+    padding: 2px;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.cost-container{
+    border: solid 1px black;
+    width: 12px;
+    border-radius: 8px;
+    text-align: center;
+    padding: 2px;
+    font-size: 12px;
+    margin-top: 2px;
+    color: white;
+    background-color: black;
 }
