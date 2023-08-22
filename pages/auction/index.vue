@@ -4,22 +4,13 @@
     </div>
     <div class="container">
         <div v-for="championship in championships">
-            <NuxtLink :to="'/championship/' + championship.Id">
+            <NuxtLink :to="'/auction/championship/' + championship.Id">
                 <div class="small-container">
                     {{championship.Nome}}
                 </div>
             </NuxtLink> 
         </div>
-        <div class="small-container" style="border: dashed; font-size: 20px;" @click="showCreator()">
-            +
-        </div>
     </div>   
-    <div class="hidden-container" id="creator">
-        <div id="exit" @click="hideCreator()">X</div>
-        <label for="champName">Inserisci nome campionato:</label>
-        <input type = "text" id = "champName" v-model="name" autocomplete="off">
-        <div id="submit" @click="createChamp()">Crea campionato</div>
-    </div> 
 </template>
 
 <script setup>

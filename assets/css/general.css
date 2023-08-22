@@ -403,7 +403,7 @@ a{
 
 .small-container{
     border: solid 1px black;
-    width: 160px;
+    width: 180px;
     border-radius: 8px;
     text-align: center;
     padding: 20px;
@@ -422,6 +422,7 @@ a{
 .container{
     display: flex;
     gap: 32px;
+    flex-wrap: wrap;
 }
 
 .hidden-container{

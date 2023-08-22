@@ -1,10 +1,10 @@
 <template>
     <div class="title">
-        {{ players[0].squad.Nome }}
+        {{ squad.Nome }}
     </div>
     <div class="card-container">
-        <div v-for="p in players">
-            <NuxtLink :to='"/player/" + p.player.Id'><PlayerCard :name="p.player.Nome" :squad="p.player.team.Nome" :role="p.player.Ruolo" :id="p.player.Id" :color1="p.player.team.color1" :color2="p.player.team.color2" :rate="p.player.rate" :slot="p.player.slot" :cost="p.player.cost"/></NuxtLink>
+        <div v-for="p in squad.player">
+            <NuxtLink :to='"/player/" + p.Id'><PlayerCard :name="p.Nome" :squad="p.team.Nome" :role="p.Ruolo" :id="p.Id" :color1="p.team.color1" :color2="p.team.color2" :rate="p.rate" :slot="p.slot" :cost="p.cost"/></NuxtLink>
         </div>
     </div>
 </template>
@@ -22,6 +22,6 @@
 
     const route = useRoute()
     const id = route.params.id
-    const { data: players } = await useFetch('/api/squad/' + id)
+    const { data: squad } = await useFetch('/api/squad/' + id)
     
 </script>
