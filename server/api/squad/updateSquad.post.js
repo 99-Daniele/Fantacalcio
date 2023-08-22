@@ -2,19 +2,18 @@ import { serverSupabaseClient } from '#supabase/server';
 
 export default defineEventHandler(async (event) => {
 
+    const { data } = await readBody(event);
     const client = serverSupabaseClient(event);
-    const id = event.context.params.id;
+    const id = data[0];
 
-    const { data, error } = await client
+    const { error } = await client
         .from('squad')
-        .select('squadId, Nome, Giocatore, championship(*)')
-        .eq('championshipId', id)
-        .order('Nome'); 
+        .update({ Nome: data[1], Giocatore: data[2] })
+        .eq('squadId', id); 
   
     if (error) {
         throw createError({ statusCode: 400, statusMessage: error.message });
     }
 
-    return data;
-
+    return "Squadra " + data[1] + " del giocatore " + data[2] + " modificata correttamente";
 });

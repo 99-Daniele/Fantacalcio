@@ -15,8 +15,6 @@ export default defineEventHandler(async (event) => {
     const { error } = await client
         .from('championship')
         .insert({ Id: champId.data.Id + 1, Nome: data[0]}); 
-
-    console.log(champId)    
   
     if (error) {
         throw createError({ statusCode: 400, statusMessage: error.message });

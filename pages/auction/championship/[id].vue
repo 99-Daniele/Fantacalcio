@@ -1,5 +1,7 @@
 <template>
-    <h1>{{ squads[0].championship.Nome }}</h1>
+    <div class="title">
+        {{ squads[0].championship.Nome }}
+    </div>
     <div class="container">
         <div v-for="squad in squads">
             <NuxtLink :to="'/squad/' + squad.squadId">
