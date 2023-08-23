@@ -2,7 +2,7 @@
     <div class="title">
         Giocatori
     </div>
-    <input id="search" type="text" v-model="search" placeholder="Search player.." autocomplete="off"/>
+    <input id="search" type="text" v-model="search" placeholder="Cerca giocatore..." autocomplete="off"/>
     <div class="role-button-container">
         <NuxtLink to="/player/P"><div id="p-button">P</div></NuxtLink>
         <NuxtLink to="/player/D"><div id="d-button">D</div></NuxtLink>
@@ -65,8 +65,6 @@
 </script>
 
 <script>
-
-    import { ref } from 'vue'
 
     export default {
         methods: {

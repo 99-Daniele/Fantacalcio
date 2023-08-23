@@ -1,9 +1,9 @@
 <template>
     <div class="title">
-        {{ squads[0].championship.Nome }}
+        {{ championship.Nome }}
     </div>
     <div class="container">
-        <div v-for="squad in squads">
+        <div v-for="squad in championship.squad">
             <NuxtLink :to="'/squad/' + squad.squadId">
                 <div class="small-container">
                     <div class="squad-name-container">
@@ -48,13 +48,11 @@
 
     const route = useRoute()
     const id = route.params.id
-    const { data: squads } = await useFetch('/api/championship/' + id)
+    const { data: championship } = await useFetch('/api/championship/' + id)
     
 </script>
 
 <script>
-
-    import { ref } from 'vue'
 
     export default {
         methods: {

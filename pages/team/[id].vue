@@ -2,7 +2,7 @@
     <div class="title">
         {{ team }}
     </div>
-    <input id="search" type="text" v-model="search" placeholder="Search player.." autocomplete="off"/>
+    <input id="search" type="text" v-model="search" placeholder="Cerca giocatore..." autocomplete="off"/>
     <img :src="'/logo/' + team + '.png'" id="logo">
     <div class="team-container">
         <div v-for="team in teams">

@@ -2,7 +2,19 @@
     <div class="title">
         {{ champ.Nome }}
     </div>
-    <input id="search" type="text" v-model="search" placeholder="Search player.." autocomplete="off"/>
+    <div id="p-card">
+        <PlayerCard :name="filteredPlayers[0].Nome" :squad="filteredPlayers[0].team.Nome" :role="filteredPlayers[0].Ruolo" :id="filteredPlayers[0].Id" :color1="filteredPlayers[0].team.color1" :color2="filteredPlayers[0].team.color2" :rate="filteredPlayers[0].rate" :slot="filteredPlayers[0].slot" :cost="filteredPlayers[0].cost"/>
+    </div>
+    <input id="search" type="text" v-model="search" placeholder="Cerca giocatore..." autocomplete="off" list="searchedPlayers" @change="showPlayer()">
+    <datalist id="searchedPlayers">
+        <option :value="p.Nome" v-for="p in players"></option>
+    </datalist>
+    <select name="squad-list" id="squad-list">
+        <option value="default">Scegli squadra..</option>
+        <option :value="squad.Nome" v-for="squad in champ.squad">{{ squad.Nome }}</option>
+    </select>
+    <input type="number" min="1" id="cost">
+    <input type="submit" style="border-radius: 8px; width: 60px; cursor:pointer;">
     <div class="container">
         <div v-for="squad in champ.squad">
             <div class="mini-container">
@@ -72,7 +84,8 @@
     }
 
     .container{
-        gap: 8px
+        gap: 8px;
+        margin-left: -80px
     }
 
     .squad-name-container{
@@ -86,40 +99,96 @@
         margin-top: 2px;
     }
 
+    #search{ 
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-right: 20px;
+    }
+
+    .searched-player-list{
+        margin-top: 20px;
+        max-height: 100px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        margin-bottom: 20px;
+        width: 160px;
+    }
+
+    .searched-player{
+        cursor: pointer;
+    }
+
+    .searched-player:hover{
+        background-color: black;
+        color: white;
+    }
+
+    .player-container{
+        width: 60px;
+        overflow-x: hidden;
+    }
+
+    #squad-list{
+        width: 160px;
+        border-radius: 8px;
+        margin-bottom: 100px;
+        margin-right: 20px;
+    }
+
+    #p-card{
+        visibility: hidden;
+    }
+
+    #p-card .player-card{
+        position: absolute;
+        top: 80px;
+        right: 160px;
+    }
+
+    #cost{
+        width: 60px;
+        border-radius: 8px;
+        margin-right: 20px;
+    }
+
 </style>
 
 <script setup>
 
+    import { ref } from 'vue'
+
+    const search = ref('')
+
     const route = useRoute()
     const id = route.params.id
     const { data: champ } = await useFetch('/api/championship/' + id)
-    
+    const { data: players } = await useFetch('/api/player/')
+
+    const filteredPlayers = computed(() => {
+        if(search.value.length > 0){
+            return players.value.filter(player => {
+                return player.Nome.toLowerCase().startsWith(search.value.toLowerCase())
+            })
+        }
+        else{
+            return players.value
+        }
+    })
+
 </script>
 
 <script>
-
-    import { ref } from 'vue'
-
+    
     export default {
         methods: {
-            showCreator: function(){
-                document.getElementById("creator").style.visibility = 'visible';
+            showPlayer: function(){
+                document.getElementById("p-card").style.visibility = 'visible';
+                
             },
-            hideCreator: function(){
-                document.getElementById("creator").style.visibility = 'hidden';
-            },
-            async createSquad(){
-                this.hideCreator();
-                const { data: response } = await useFetch('/api/squad/createSquad', {
-                        method: 'post',
-                        body: {
-                            data: [useRoute().params.id, document.getElementById("squadName").value, document.getElementById("playerName").value]
-                        } 
-                    })
-                    if (response) {
-                        alert(response.value);
-                    }  
-            },
+            chosePlayer: function(player){
+                document.getElementById("search").value = player.Nome;
+            }
         }
     }
 
