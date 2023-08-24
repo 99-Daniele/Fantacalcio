@@ -14,7 +14,7 @@
         <option :value="squad.Nome" v-for="squad in champ.squad">{{ squad.Nome }}</option>
     </select>
     <input type="number" min="1" id="cost">
-    <input type="submit" style="border-radius: 8px; width: 60px; cursor:pointer;">
+    <input type="submit" style="border-radius: 8px; width: 60px; cursor:pointer;" @click="buyPlayer()">
     <div class="container">
         <div v-for="squad in champ.squad">
             <div class="mini-container">
@@ -52,17 +52,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="rate-list">
-                    <div v-for="p in squad.squadPlayers">
-                        <div class="rate-container">
-                            {{ p.player.rate }}
-                        </div>
-                    </div>
-                </div>
                 <div class="cost-list">
                     <div v-for="p in squad.squadPlayers">
                         <div class="cost-container">
                             {{ p.cost }}
+                        </div>
+                    </div>
+                </div>
+                <div class="rate-list">
+                    <div v-for="p in squad.squadPlayers">
+                        <div class="rate-container">
+                            {{ p.player.rate }}
                         </div>
                     </div>
                 </div>
@@ -113,15 +113,6 @@
         overflow-y: scroll;
         margin-bottom: 20px;
         width: 160px;
-    }
-
-    .searched-player{
-        cursor: pointer;
-    }
-
-    .searched-player:hover{
-        background-color: black;
-        color: white;
     }
 
     .player-container{
@@ -186,8 +177,25 @@
                 document.getElementById("p-card").style.visibility = 'visible';
                 
             },
-            chosePlayer: function(player){
-                document.getElementById("search").value = player.Nome;
+            async buyPlayer(){
+                let player = document.getElementById("search").value;
+                let squad = document.getElementById("squad-list").value;
+                let cost = document.getElementById("cost").value;
+                if(cost < 1)
+                    alert("Inserire costo maggiore di 0")
+                else{
+                    const { data: response } = await useFetch('/api/squad/buyPlayer', {
+                        method: 'post',
+                        body: {
+                            data: [player, squad, cost]
+                        } 
+                    })
+                    if (response) {
+                        alert(response.value);
+                        reloadNuxtApp()
+                    } 
+                }
+
             }
         }
     }

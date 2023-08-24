@@ -517,6 +517,8 @@ a{
     padding: 2px;
     font-size: 12px;
     margin-top: 2px;
+    color: white;
+    background-color: black;
 }
 
 .cost-container{
@@ -527,6 +529,4 @@ a{
     padding: 2px;
     font-size: 12px;
     margin-top: 2px;
-    color: white;
-    background-color: black;
 }

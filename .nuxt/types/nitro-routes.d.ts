@@ -57,6 +57,9 @@ declare module 'nitropack' {
     '/api/squad/:id': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/squad/[id]').default>>>>
     }
+    '/api/squad/buyPlayer': {
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/squad/buyPlayer.post').default>>>>
+    }
     '/api/squad/createSquad': {
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/squad/createSquad.post').default>>>>
     }
