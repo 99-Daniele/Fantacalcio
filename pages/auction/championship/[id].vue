@@ -1,10 +1,16 @@
 <template>
+    {{ chosenPlayers }}
     <div class="title">
         {{ champ.Nome }}
     </div>
     <div id="p-card">
         <PlayerCard :name="filteredPlayers[0].Nome" :squad="filteredPlayers[0].team.Nome" :role="filteredPlayers[0].Ruolo" :id="filteredPlayers[0].Id" :color1="filteredPlayers[0].team.color1" :color2="filteredPlayers[0].team.color2" :rate="filteredPlayers[0].rate" :slot="filteredPlayers[0].slot" :cost="filteredPlayers[0].cost"/>
     </div>
+    <NuxtLink :to="'/auction/championship/player/' + champ.Id">
+        <div class="link">
+            SVINCOLATI <img src="~\assets\img\link.png" id="icon">
+        </div>
+    </NuxtLink>
     <input id="search" type="text" v-model="search" placeholder="Cerca giocatore..." autocomplete="off" list="searchedPlayers" @change="showPlayer()">
     <datalist id="searchedPlayers">
         <option :value="p.Nome" v-for="p in players"></option>
@@ -54,14 +60,20 @@
                 </div>
                 <div class="cost-list">
                     <div v-for="p in squad.squadPlayers">
-                        <div class="cost-container">
+                        <div class="cost-container" v-if="p.cost < 100">
+                            {{ p.cost }}
+                        </div>
+                        <div class="cost-container" v-else style="font-size: 8px; padding: 4px 2px;">
                             {{ p.cost }}
                         </div>
                     </div>
                 </div>
                 <div class="rate-list">
                     <div v-for="p in squad.squadPlayers">
-                        <div class="rate-container">
+                        <div class="rate-container" v-if="p.player.rate < 100">
+                            {{ p.player.rate }}
+                        </div>
+                        <div class="rate-container" v-else style="font-size: 8px; padding: 4px 2px;">
                             {{ p.player.rate }}
                         </div>
                     </div>
@@ -123,7 +135,7 @@
     #squad-list{
         width: 160px;
         border-radius: 8px;
-        margin-bottom: 100px;
+        margin-bottom: 90px;
         margin-right: 20px;
     }
 
@@ -143,6 +155,13 @@
         margin-right: 20px;
     }
 
+    .link{
+        font-size: 20px;
+        top: 148px;
+        left: 360px;
+        width: 124px;
+    }
+
 </style>
 
 <script setup>
@@ -155,6 +174,9 @@
     const id = route.params.id
     const { data: champ } = await useFetch('/api/championship/' + id)
     const { data: players } = await useFetch('/api/player/')
+    const { data: chosenPlayers } = await useFetch('/api/squadPlayers/' + id)
+
+    
 
     const filteredPlayers = computed(() => {
         if(search.value.length > 0){

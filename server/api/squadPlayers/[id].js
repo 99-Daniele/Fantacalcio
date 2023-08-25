@@ -6,11 +6,9 @@ export default defineEventHandler(async (event) => {
     const id = event.context.params.id;
 
     const { data, error } = await client
-        .from('championship')
-        .select('Id, Nome, squad(*, squadPlayers(*, player(*)))')
-        .eq('Id', id)
-        .limit(1)
-        .single();  
+        .from('squadPlayers')
+        .select('playerId')
+        .eq('championshipId', id);  
   
     if (error) {
         throw createError({ statusCode: 400, statusMessage: error.message });

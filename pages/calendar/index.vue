@@ -91,17 +91,6 @@
       max-width: 26px;
     }
 
-    .link{
-        position: absolute;
-        top: 130px;
-        right: 120px;
-        border-radius: 8px;
-        border: solid 1px black;
-        padding: 4px;
-        font-weight: bold;
-        transition: .5s;
-    }
-
     .link:hover{
         box-shadow: 0 0 10px black;
         transition: .5s;

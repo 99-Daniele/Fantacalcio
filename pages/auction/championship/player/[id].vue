@@ -1,0 +1,74 @@
+<template>
+    <div class="title">
+        Giocatori
+    </div>
+    <div class="goBackButton" @click="$router.go(-1)">TORNA INDIETRO</div>
+    <input id="search" type="text" v-model="search" placeholder="Cerca giocatore..." autocomplete="off"/>
+    <div class="role-button-container">
+        <NuxtLink to="/player/P"><div id="p-button">P</div></NuxtLink>
+        <NuxtLink to="/player/D"><div id="d-button">D</div></NuxtLink>
+        <NuxtLink to="/player/C"><div id="c-button">C</div></NuxtLink>
+        <NuxtLink to="/player/A"><div id="a-button">A</div></NuxtLink>
+    </div>
+    <div class="card-container">
+        <div v-for="player in searchedPlayers">
+            <NuxtLink :to='"/player/" + player.Id'><PlayerCard :name="player.Nome" :squad="player.team.Nome" :role="player.Ruolo" :id="player.Id" :color1="player.team.color1" :color2="player.team.color2" :rate="player.rate" :slot="player.slot" :cost="player.cost"/></NuxtLink>
+        </div>
+    </div>
+    <div class="go-up" id="go-up-button" @click="back()">
+        <div class="circle">
+            <div class="arrow"></div>
+        </div>
+    </div>
+</template>
+
+<style scoped>
+
+    .player-card:hover{
+        box-shadow: 0 0 10px black;
+        transition: 0.5s;
+    }
+
+    .goBackButton{
+        top: 140px;
+        height: 20px;
+        left: 300px;
+    }
+
+</style>
+
+<script setup>
+
+    import { ref } from 'vue'
+
+    const search = ref('')
+
+    const { data: players } = await useFetch('/api/player')
+
+    const searchedPlayers = computed(() => {
+        if(search.value.length > 0){
+            return players.value.filter(player => {
+                return player.Nome.toLowerCase().startsWith(search.value.toLowerCase())
+            })
+        }
+        else{
+            return players.value
+        }
+    })
+    
+</script>
+
+<script>
+
+    export default {
+        methods: {
+            back: function(){
+                window.scrollTo({
+                    top: document.getElementById("search").offsetTop - 40,
+                    behavior: 'smooth',
+                })
+            }
+        }
+    }
+
+</script>

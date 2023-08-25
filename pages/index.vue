@@ -17,7 +17,7 @@
     <div class="hidden-container" id="creator">
         <div id="exit" @click="hideCreator()">X</div>
         <label for="champName">Inserisci nome campionato:</label>
-        <input type = "text" id = "champName" v-model="name" autocomplete="off">
+        <input type = "text" id = "champName" autocomplete="off">
         <div id="submit" @click="createChamp()">Crea campionato</div>
     </div> 
 </template>
