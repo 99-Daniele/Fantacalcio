@@ -33,17 +33,26 @@ declare module 'nitropack' {
     '/api/player/A/slot/:id': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/A/slot/[id]').default>>>>
     }
+    '/api/player/A/top': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/A/top').default>>>>
+    }
     '/api/player/C': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/C/index.get').default>>>>
     }
     '/api/player/C/slot/:id': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/C/slot/[id]').default>>>>
     }
+    '/api/player/C/top': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/C/top').default>>>>
+    }
     '/api/player/D': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/D/index.get').default>>>>
     }
     '/api/player/D/slot/:id': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/D/slot/[id]').default>>>>
+    }
+    '/api/player/D/top': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/D/top').default>>>>
     }
     '/api/player': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/index.get').default>>>>
@@ -53,6 +62,9 @@ declare module 'nitropack' {
     }
     '/api/player/P/slot/:id': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/P/slot/[id]').default>>>>
+    }
+    '/api/player/P/top': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/P/top').default>>>>
     }
     '/api/squad/:id': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/squad/[id]').default>>>>

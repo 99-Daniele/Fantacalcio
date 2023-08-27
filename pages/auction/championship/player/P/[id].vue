@@ -2,38 +2,13 @@
     <div class="title">
         Portieri
     </div>
+    <NuxtLink :to="'/auction/championship/' + id"><div class="goBackButton" >TORNA INDIETRO</div></NuxtLink>
     <input id="search" type="text" v-model="search" placeholder="Cerca giocatore..." autocomplete="off"/>
     <div class="role-button-container">
-        <NuxtLink to="/player"><div id="p-button-active">P</div></NuxtLink>
-        <NuxtLink to="/player/D"><div id="d-button">D</div></NuxtLink>
-        <NuxtLink to="/player/C"><div id="c-button">C</div></NuxtLink>
-        <NuxtLink to="/player/A"><div id="a-button">A</div></NuxtLink>
-    </div>
-    <div class="slot-button-container">
-        <div v-if="slot == 1">
-            <NuxtLink to="/player/P"><div class="button-active">1</div></NuxtLink>
-        </div>
-        <div v-else>
-            <NuxtLink to="/player/P/slot/1"><div class="button">1</div></NuxtLink>
-        </div>
-        <div v-if="slot == 2">
-            <NuxtLink to="/player/P"><div class="button-active">2</div></NuxtLink>
-        </div>
-        <div v-else>
-            <NuxtLink to="/player/P/slot/2"><div class="button">2</div></NuxtLink>
-        </div>
-        <div v-if="slot == 3">
-            <NuxtLink to="/player/P"><div class="button-active">3</div></NuxtLink>
-        </div>
-        <div v-else>
-            <NuxtLink to="/player/P/slot/3"><div class="button">3</div></NuxtLink>
-        </div>
-        <div v-if="slot == 0">
-            <NuxtLink to="/player/P"><div class="button-active">4+</div></NuxtLink>
-        </div>
-        <div v-else>
-            <NuxtLink to="/player/P/slot/0"><div class="button">4+</div></NuxtLink>
-        </div>
+        <NuxtLink :to="'/auction/championship/player/' + id"><div id="p-button-active">P</div></NuxtLink>
+        <NuxtLink :to="'/auction/championship/player/D/' + id"><div id="d-button">D</div></NuxtLink>
+        <NuxtLink :to="'/auction/championship/player/C/' + id"><div id="c-button">C</div></NuxtLink>
+        <NuxtLink :to="'/auction/championship/player/A/' + id"><div id="a-button">A</div></NuxtLink>
     </div>
     <div class="card-container">
         <div v-for="player in searchedPlayers">
@@ -49,13 +24,15 @@
 
 <style scoped>
 
-    .slot-button-container{
-        width: 390.67px;
-    }
-
     .player-card:hover{
         box-shadow: 0 0 10px black;
         transition: 0.5s;
+    }
+
+    .goBackButton{
+        top: 140px;
+        height: 20px;
+        left: 300px;
     }
 
     .title{
@@ -71,8 +48,15 @@
     const search = ref('')
 
     const route = useRoute()
-    const slot = route.params.id
-    const { data: players } = await useFetch('/api/player/P/slot/' + slot)
+    const id = route.params.id
+    const { data: players } = await useFetch('/api/player/P/top/')
+    const { data: chosenPlayers } = await useFetch('/api/squadPlayers/' + id)
+
+    for(let i = 0; i < players.value.length; i++){
+        for(let j = 0; j < chosenPlayers.value.length; j++)
+            if(players.value[i].Id === chosenPlayers.value[j].playerId)
+                players.value.splice(i, 1);
+    }
 
     const searchedPlayers = computed(() => {
         if(search.value.length > 0){

@@ -1,6 +1,6 @@
 <template>
     <div class="title">
-        Giocatori
+        Difensori
     </div>
     <input id="search" type="text" v-model="search" placeholder="Cerca giocatore..." autocomplete="off"/>
     <div class="role-button-container">
@@ -82,6 +82,10 @@
     .player-card:hover{
         box-shadow: 0 0 10px black;
         transition: 0.5s;
+    }
+
+    .title{
+        border-color: #47C6EF;
     }
 
 </style>
