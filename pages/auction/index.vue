@@ -28,19 +28,7 @@
             },
             hideCreator: function(){
                 document.getElementById("creator").style.visibility = 'hidden';
-            },
-            async createChamp(){
-                this.hideCreator();
-                const { data: response } = await useFetch('/api/championship/createChampionship', {
-                        method: 'post',
-                        body: {
-                            data: [document.getElementById("champName").value]
-                        } 
-                    })
-                    if (response) {
-                        alert(response.value);
-                    }  
-            },
+            }
         }
     }
 

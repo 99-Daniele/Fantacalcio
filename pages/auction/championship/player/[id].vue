@@ -48,8 +48,8 @@
     const { data: players } = await useFetch('/api/player/')
     const { data: chosenPlayers } = await useFetch('/api/squadPlayers/' + id)
 
-    for(let i = 0; i < players.value.length; i++){
-        for(let j = 0; j < chosenPlayers.value.length; j++)
+    for(let j = 0; j < chosenPlayers.value.length; j++){
+        for(let i = 0; i < players.value.length; i++)
             if(players.value[i].Id === chosenPlayers.value[j].playerId)
                 players.value.splice(i, 1);
     }

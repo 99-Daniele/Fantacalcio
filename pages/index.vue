@@ -47,7 +47,8 @@
                         } 
                     })
                     if (response) {
-                        alert(response.value);
+                        alert(response.value)
+                        reloadNuxtApp()
                     }  
             },
         }

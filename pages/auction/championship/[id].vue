@@ -30,29 +30,29 @@
             <div class="squad-list">
                 <div class="role-list">
                     <div v-for="i in 3">
-                        <div id="circle" style="background-color: orange;">
+                        <div class="role-circle" style="background-color: orange;" @click="showDelete(squad.Nome, i)">
                             P
                         </div> 
                     </div>
                     <div v-for="i in 8">
-                        <div id="circle" style="background-color: #47C6EF;">
+                        <div class="role-circle" style="background-color: #47C6EF;" @click="showDelete(squad.Nome, i + 3)">
                             D
                         </div> 
                     </div>
                     <div v-for="i in 8">
-                        <div id="circle" style="background-color: rgb(92, 255, 47);">
+                        <div class="role-circle" style="background-color: rgb(92, 255, 47);" @click="showDelete(squad.Nome, i + 11)">
                             C
                         </div> 
                     </div>
                     <div v-for="i in 6">
-                        <div id="circle" style="background-color: red;">
+                        <div class="role-circle" style="background-color: red;" @click="showDelete(squad.Nome, i + 19)">
                             A
                         </div> 
                     </div>
                 </div>
                 <div class="player-list">
                     <div v-for="p in squad.squadPlayers">
-                        <div class="player-container">
+                        <div class="player-container" :id="squad.Nome + ' - ' + squad.squadPlayers.indexOf(p)">
                             {{ p.player.Nome }}
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                         <div class="cost-container" v-if="p.cost < 100">
                             {{ p.cost }}
                         </div>
-                        <div class="cost-container" v-else style="font-size: 8px; padding: 4px 2px;">
+                        <div class="cost-container" v-else style="font-size: 8px; padding-top: 4px; height: 12.2px;">
                             {{ p.cost }}
                         </div>
                     </div>
@@ -72,14 +72,19 @@
                         <div class="rate-container" v-if="p.player.rate < 100">
                             {{ p.player.rate }}
                         </div>
-                        <div class="rate-container" v-else style="font-size: 8px; padding: 4px 2px;">
+                        <div class="rate-container" v-else style="font-size: 8px; padding-top: 4px; height: 12.2px;">
                             {{ p.player.rate }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>  
+    <div class="hidden-container" id="delete-container">
+        <label id="delete">Sei sicuro di eliminare il giocatore {{ deletedPlayer }} dalla squadra {{deletedSquad}}?</label>
+        <button @click="deletePlayer()">SI</button>
+        <button @click="hideDelete()">NO</button>
+    </div> 
 </template>
 
 <style scoped>
@@ -103,11 +108,17 @@
         font-size: 16px;
     }
 
-    #circle{
+    .role-circle{
         border-radius: 50%;
         width: 18px;
         color: white;
         margin-top: 2px;
+        cursor: pointer;
+    }
+
+    .role-circle:hover{
+        filter: grayscale(100%);
+        color: black;
     }
 
     #search{ 
@@ -128,7 +139,14 @@
 
     .player-container{
         width: 60px;
-        overflow-x: hidden;
+        height: 14.2px;
+        overflow: hidden;
+    }
+
+    .player-container:hover{
+        overflow: visible; 
+        white-space: normal;
+        height:auto;
     }
 
     #squad-list{
@@ -148,6 +166,14 @@
         right: 160px;
     }
 
+    .cost-container{
+        height: 14.2px;
+    }
+
+    .rate-container{
+        height: 14.2px;
+    }
+
     #cost{
         width: 60px;
         border-radius: 8px;
@@ -159,6 +185,23 @@
         top: 148px;
         left: 360px;
         width: 124px;
+    }
+
+    .hidden-container{
+        width: 300px;
+        left: 550px;
+    }
+
+    #delete{
+        display: flex;
+    }
+
+    button{
+        border-radius: 8px;
+        margin-top: 20px;
+        margin-left: 20px;
+        width: 60px;
+        cursor: pointer;
     }
 
 </style>
@@ -195,9 +238,26 @@
 </script>
 
 <script>
+
     
     export default {
+        data(){
+            return{
+                deletedPlayer: null,
+                deletedSquad: null
+            }
+        },
         methods: {
+            showDelete: function(squadName, i){
+                if(document.getElementById(squadName + " - " + (i - 1)) != null){
+                    document.getElementById("delete-container").style.visibility = 'visible';
+                    this.deletedPlayer = document.getElementById(squadName + " - " + (i - 1)).textContent;
+                    this.deletedSquad = squadName;
+                }
+            },
+            hideDelete: function(){
+                document.getElementById("delete-container").style.visibility = 'hidden';
+            },
             showPlayer: function(){
                 document.getElementById("p-card").style.visibility = 'visible';
                 
@@ -216,11 +276,22 @@
                         } 
                     })
                     if (response) {
-                        alert(response.value);
+                        alert(response.value)
                         reloadNuxtApp()
                     } 
                 }
-
+            },
+            async deletePlayer(){
+                const { data: response } = await useFetch('/api/squad/deletePlayer', {
+                        method: 'post',
+                        body: {
+                            data: [this.deletedPlayer, this.deletedSquad]
+                        } 
+                    })
+                    if (response) {
+                        alert(response.value)
+                        reloadNuxtApp()
+                    } 
             }
         }
     }

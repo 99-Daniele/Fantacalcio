@@ -75,6 +75,9 @@ declare module 'nitropack' {
     '/api/squad/createSquad': {
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/squad/createSquad.post').default>>>>
     }
+    '/api/squad/deletePlayer': {
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/squad/deletePlayer.post').default>>>>
+    }
     '/api/squad/updateSquad': {
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/squad/updateSquad.post').default>>>>
     }
