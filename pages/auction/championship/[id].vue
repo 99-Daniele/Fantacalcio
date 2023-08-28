@@ -29,6 +29,11 @@
         <div v-for="squad in champ.squad">
             <div class="mini-container">
                 <div class="squad-name-container">
+                    R: {{ calcRate(squad.squadPlayers) }}  C: {{ calcCost(squad.squadPlayers) }}
+                </div>
+            </div>
+            <div class="mini-container">
+                <div class="squad-name-container">
                     {{ squad.name }}
                 </div>
             </div>
@@ -266,6 +271,20 @@
             showPlayer: function(){
                 document.getElementById("p-card").style.visibility = 'visible';
                 
+            },
+            calcRate: function(squadPlayers){
+                let rate = 0;
+                for(let i = 0; i < squadPlayers.length; i++){
+                    rate = rate + squadPlayers[i].player.rate;
+                }
+                return rate;
+            },
+            calcCost: function(squadPlayers){
+                let cost = 0;
+                for(let i = 0; i < squadPlayers.length; i++){
+                    cost = cost + squadPlayers[i].cost;
+                }
+                return cost;
             },
             async buyPlayer(){
                 let player = document.getElementById("search").value;
