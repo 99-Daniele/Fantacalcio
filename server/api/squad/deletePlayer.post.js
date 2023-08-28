@@ -7,22 +7,22 @@ export default defineEventHandler(async (event) => {
 
     const player = await client 
         .from('player')
-        .select('Id')
-        .eq('Nome', data[0])
+        .select('id')
+        .eq('name', data[0])
         .limit(1)
         .single(); 
     
     const squad = await client 
         .from('squad')
         .select('squadId')
-        .eq('Nome', data[1])
+        .eq('name', data[1])
         .limit(1)
         .single();   
 
     const { error } = await client
         .from('squadPlayers')
         .delete()
-        .match({ squadId: squad.data.squadId, playerId: player.data.Id });
+        .match({ squadId: squad.data.squadId, playerId: player.data.id });
   
     if (error) {
         throw createError({ statusCode: 400, statusMessage: error.message });

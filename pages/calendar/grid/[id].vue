@@ -9,7 +9,7 @@
     </NuxtLink>
     <div class="team-container">
         <div v-for="team in teams">
-            <NuxtLink :to="'/calendar/grid/' + team.Nome"><img :src="'/logo/' + team.Nome + '.png'" id="calendar-logo"></NuxtLink>
+            <NuxtLink :to="'/calendar/grid/' + team.name"><img :src="'/logo/' + team.name + '.png'" id="calendar-logo"></NuxtLink>
         </div>
     </div>
     <div class="grid-container">
@@ -17,7 +17,7 @@
             <tr>
                 <th></th>
                 <th v-for="team in teams">
-                    <b>{{team.Nome.substring(0,3)}}</b>
+                    <b>{{team.name.substring(0,3)}}</b>
                 </th>
             </tr>
             <tr v-for="gridTeam in grid">
@@ -140,7 +140,7 @@
 
     teams.value.forEach(team => {
         const games = [];
-        const teamName = team.Nome;
+        const teamName = team.name;
         calendar.value.forEach(game => {
             if(game.homeTeam == teamName){
                 games.push(game);

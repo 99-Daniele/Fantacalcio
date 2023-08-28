@@ -16,7 +16,7 @@
     </div>
     <div class="team-container">
         <div v-for="team in teams">
-            <NuxtLink :to="'/calendar/team/' + team.Nome"><img :src="'/logo/' + team.Nome + '.png'" id="calendar-logo"></NuxtLink>
+            <NuxtLink :to="'/calendar/team/' + team.name"><img :src="'/logo/' + team.name + '.png'" id="calendar-logo"></NuxtLink>
         </div>
     </div>
     <div class="calendar-container">

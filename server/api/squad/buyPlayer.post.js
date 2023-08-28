@@ -7,21 +7,21 @@ export default defineEventHandler(async (event) => {
 
     const player = await client 
         .from('player')
-        .select('Id')
-        .eq('Nome', data[0])
+        .select('id')
+        .eq('name', data[0])
         .limit(1)
         .single(); 
     
     const squad = await client 
         .from('squad')
         .select('squadId, championshipId')
-        .eq('Nome', data[1])
+        .eq('name', data[1])
         .limit(1)
         .single();   
 
     const { error } = await client
         .from('squadPlayers')
-        .insert({ squadId: squad.data.squadId, playerId: player.data.Id, cost: data[2] , championshipId: squad.data.championshipId}); 
+        .insert({ squadId: squad.data.squadId, playerId: player.data.id, cost: data[2] , championshipId: squad.data.championshipId}); 
   
     if (error) {
         throw createError({ statusCode: 400, statusMessage: error.message });

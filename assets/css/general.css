@@ -541,3 +541,7 @@ a{
     font-weight: bold;
     transition: .5s;
 }
+
+.link:hover{
+    box-shadow: 0 0 10px black;
+}

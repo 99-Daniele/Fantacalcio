@@ -1,14 +1,14 @@
 <template>
     <div class="title">
-        {{ squad.Nome }}
+        {{ squad.name }}
     </div>
     <div class="subtitle">
-        {{ squad.Giocatore }}
+        {{ squad.gamer }}
     </div>
     <img src="~\assets\img\modify.png" id="icon" @click="showModifier()">
     <div class="card-container">
         <div v-for="p in squad.player">
-            <NuxtLink :to='"/player/" + p.Id'><PlayerCard :name="p.Nome" :squad="p.team.Nome" :role="p.Ruolo" :id="p.Id" :color1="p.team.color1" :color2="p.team.color2" :rate="p.rate" :slot="p.slot" :cost="p.cost"/></NuxtLink>
+            <NuxtLink :to='"/player/" + p.id'><PlayerCard :name="p.name" :squad="p.team.name" :role="p.role" :id="p.id" :color1="p.team.color1" :color2="p.team.color2" :rate="p.rate" :slot="p.slot" :cost="p.cost"/></NuxtLink>
         </div>
     </div>
     <div class="hidden-container" id="modifier">
@@ -17,7 +17,7 @@
         <input type = "text" id = "squadName" autocomplete="off">
         <label for="playerName">Cambia nome giocatore:</label>
         <input type = "text" id = "playerName" autocomplete="off">
-        <div id="submit" @click="modifySquad()">Crea squadra</div>
+        <div id="submit" @click="modifySquad()">Modifica squadra</div>
     </div>
     <div class="goBackButton" @click="$router.go(-1)">TORNA INDIETRO</div>
 </template>

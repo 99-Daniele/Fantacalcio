@@ -12,7 +12,7 @@
     </div>
     <div class="card-container">
         <div v-for="player in searchedPlayers">
-            <NuxtLink :to='"/player/" + player.Id'><PlayerCard :name="player.Nome" :squad="player.team.Nome" :role="player.Ruolo" :id="player.Id" :color1="player.team.color1" :color2="player.team.color2" :rate="player.rate" :slot="player.slot" :cost="player.cost"/></NuxtLink>
+            <NuxtLink :to='"/player/" + player.id'><PlayerCard :name="player.name" :squad="player.team.name" :role="player.role" :id="player.id" :color1="player.team.color1" :color2="player.team.color2" :rate="player.rate" :slot="player.slot" :cost="player.cost"/></NuxtLink>
         </div>
     </div>
     <div class="go-up" id="go-up-button" @click="back()">
@@ -48,14 +48,14 @@
 
     for(let j = 0; j < chosenPlayers.value.length; j++){
         for(let i = 0; i < players.value.length; i++)
-            if(players.value[i].Id === chosenPlayers.value[j].playerId)
+            if(players.value[i].id === chosenPlayers.value[j].playerId)
                 players.value.splice(i, 1);
     }
 
     const searchedPlayers = computed(() => {
         if(search.value.length > 0){
             return players.value.filter(player => {
-                return player.Nome.toLowerCase().startsWith(search.value.toLowerCase())
+                return player.name.toLowerCase().startsWith(search.value.toLowerCase())
             })
         }
         else{

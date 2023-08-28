@@ -3,7 +3,7 @@
         {{ champ.name }}
     </div>
     <div id="p-card">
-        <PlayerCard :name="filteredPlayers[0].Nome" :squad="filteredPlayers[0].team.Nome" :role="filteredPlayers[0].Ruolo" :id="filteredPlayers[0].Id" :color1="filteredPlayers[0].team.color1" :color2="filteredPlayers[0].team.color2" :rate="filteredPlayers[0].rate" :slot="filteredPlayers[0].slot" :cost="filteredPlayers[0].cost"/>
+        <PlayerCard :name="filteredPlayers[0].name" :squad="filteredPlayers[0].team.name" :role="filteredPlayers[0].role" :id="filteredPlayers[0].id" :color1="filteredPlayers[0].team.color1" :color2="filteredPlayers[0].team.color2" :rate="filteredPlayers[0].rate" :slot="filteredPlayers[0].slot" :cost="filteredPlayers[0].cost"/>
     </div>
     <NuxtLink :to="'/auction/championship/player/' + champ.id">
         <div class="link">
@@ -17,11 +17,11 @@
     </NuxtLink>
     <input id="search" type="text" v-model="search" placeholder="Cerca giocatore..." autocomplete="off" list="searchedPlayers" @change="showPlayer()">
     <datalist id="searchedPlayers">
-        <option :value="p.Nome" v-for="p in players"></option>
+        <option :value="p.name" v-for="p in players"></option>
     </datalist>
     <select name="squad-list" id="squad-list">
         <option value="default">Scegli squadra..</option>
-        <option :value="squad.Nome" v-for="squad in champ.squad">{{ squad.Nome }}</option>
+        <option :value="squad.name" v-for="squad in champ.squad">{{ squad.name }}</option>
     </select>
     <input type="number" min="1" id="cost">
     <input type="submit" style="border-radius: 8px; width: 60px; cursor:pointer;" @click="buyPlayer()">
@@ -29,36 +29,36 @@
         <div v-for="squad in champ.squad">
             <div class="mini-container">
                 <div class="squad-name-container">
-                    {{ squad.Nome }}
+                    {{ squad.name }}
                 </div>
             </div>
             <div class="squad-list">
                 <div class="role-list">
                     <div v-for="i in 3">
-                        <div class="role-circle" style="background-color: orange;" @click="showDelete(squad.Nome, i)">
+                        <div class="role-circle" style="background-color: orange;" @click="showDelete(squad.name, i)">
                             P
                         </div> 
                     </div>
                     <div v-for="i in 8">
-                        <div class="role-circle" style="background-color: #47C6EF;" @click="showDelete(squad.Nome, i + 3)">
+                        <div class="role-circle" style="background-color: #47C6EF;" @click="showDelete(squad.name, i + 3)">
                             D
                         </div> 
                     </div>
                     <div v-for="i in 8">
-                        <div class="role-circle" style="background-color: rgb(92, 255, 47);" @click="showDelete(squad.Nome, i + 11)">
+                        <div class="role-circle" style="background-color: rgb(92, 255, 47);" @click="showDelete(squad.name, i + 11)">
                             C
                         </div> 
                     </div>
                     <div v-for="i in 6">
-                        <div class="role-circle" style="background-color: red;" @click="showDelete(squad.Nome, i + 19)">
+                        <div class="role-circle" style="background-color: red;" @click="showDelete(squad.name, i + 19)">
                             A
                         </div> 
                     </div>
                 </div>
                 <div class="player-list">
                     <div v-for="p in squad.squadPlayers">
-                        <div class="player-container" :id="squad.Nome + ' - ' + squad.squadPlayers.indexOf(p)">
-                            {{ p.player.Nome }}
+                        <div class="player-container" :id="squad.name + ' - ' + squad.squadPlayers.indexOf(p)">
+                            {{ p.player.name }}
                         </div>
                     </div>
                 </div>
@@ -225,14 +225,14 @@
 
     for(let i = 0; i < players.value.length; i++){
         for(let j = 0; j < chosenPlayers.value.length; j++)
-            if(players.value[i].Id === chosenPlayers.value[j].playerId)
+            if(players.value[i].id === chosenPlayers.value[j].playerId)
                 players.value.splice(i, 1);
     }   
 
     const filteredPlayers = computed(() => {
         if(search.value.length > 0){
             return players.value.filter(player => {
-                return player.Nome.toLowerCase().startsWith(search.value.toLowerCase())
+                return player.name.toLowerCase().startsWith(search.value.toLowerCase())
             })
         }
         else{

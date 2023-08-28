@@ -4,7 +4,7 @@
     </div>
     <div class="card-container">
         <div v-for="team in teams">
-            <NuxtLink :to="'/team/' + team.Nome"><TeamCard :name="team.Nome" :pos="team.Posizione"></TeamCard></NuxtLink>
+            <NuxtLink :to="'/team/' + team.name"><TeamCard :name="team.name" :pos="team.position"></TeamCard></NuxtLink>
         </div>
     </div>
 </template>

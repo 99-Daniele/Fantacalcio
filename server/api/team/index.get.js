@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const { data, error } = await client
     .from('team')
     .select('*')
-    .order('Nome'); 
+    .order('name'); 
   
   if (error) {
     throw createError({ statusCode: 400, statusMessage: error.message });

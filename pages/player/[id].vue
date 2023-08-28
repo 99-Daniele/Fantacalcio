@@ -1,19 +1,19 @@
 <template>
-    <div class="title" v-if="player.Ruolo == 'P'" style="border-color: orange">
-        {{player.Nome}}
+    <div class="title" v-if="player.role == 'P'" style="border-color: orange">
+        {{player.name}}
     </div>
-    <div class="title" v-else-if="player.Ruolo == 'D'" style="border-color: #47C6EF">
-        {{player.Nome}}
+    <div class="title" v-else-if="player.role == 'D'" style="border-color: #47C6EF">
+        {{player.name}}
     </div>
-    <div class="title" v-else-if="player.Ruolo == 'C'" style="border-color: rgb(92, 255, 47)">
-        {{player.Nome}}
+    <div class="title" v-else-if="player.role == 'C'" style="border-color: rgb(92, 255, 47)">
+        {{player.name}}
     </div>
     <div class="title" v-else style="border-color: red">
-        {{player.Nome}}
+        {{player.name}}
     </div>
     <div class="goBackButton" @click="$router.go(-1)">TORNA INDIETRO</div>
     <div id="big-card">
-        <PlayerCard :name="player.Nome" :squad="player.team.Nome" :role="player.Ruolo" :id="player.Id" :color1="player.team.color1" :color2="player.team.color2" :rate="player.rate" :slot="player.slot" :cost="player.cost"/>
+        <PlayerCard :name="player.name" :squad="player.team.name" :role="player.role" :id="player.id" :color1="player.team.color1" :color2="player.team.color2" :rate="player.rate" :slot="player.slot" :cost="player.cost"/>
     </div>
     <div class="player-infos">
         <div class="player-info" style="width: 100%">
@@ -32,13 +32,13 @@
             <img src="~\assets\img\GS.png" id="icon">: {{ player.GS }}
         </div>
         <div class="player-info">
-            <img src="~\assets\img\ass.png" id="icon">: {{ player.Assist }}
+            <img src="~\assets\img\ass.png" id="icon">: {{ player.ass }}
         </div>
         <div class="player-info">
-            <img src="~\assets\img\amm.png" id="icon">: {{ player.Ammonizioni }}
+            <img src="~\assets\img\amm.png" id="icon">: {{ player.amm }}
         </div>
         <div class="player-info">
-            <img src="~\assets\img\esp.png" id="icon">: {{ player.Espulsioni }}
+            <img src="~\assets\img\esp.png" id="icon">: {{ player.esp }}
         </div>
         <div class="player-info">
             <img src="~\assets\img\R+.png" id="icon">: {{ player.RSG }}
@@ -50,7 +50,7 @@
             <img src="~\assets\img\RP.png" id="icon">: {{ player.RP }}
         </div>
         <div class="player-info">
-            <img src="~\assets\img\aut.png" id="icon">: {{ player.Autogol }}
+            <img src="~\assets\img\aut.png" id="icon">: {{ player.aut }}
         </div>
     </div>
 </template>

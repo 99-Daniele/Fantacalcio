@@ -8,10 +8,10 @@
             <NuxtLink :to="'/squad/' + squad.squadId">
                 <div class="small-container">
                     <div class="squad-name-container">
-                        {{ squad.Nome }}
+                        {{ squad.name }}
                     </div>
                     <div class="player-name-container">
-                        {{ squad.Giocatore }}
+                        {{ squad.gamer }}
                     </div>
                 </div>
             </NuxtLink>
