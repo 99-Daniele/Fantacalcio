@@ -29,12 +29,6 @@
         transition: 0.5s;
     }
 
-    .goBackButton{
-        top: 140px;
-        height: 20px;
-        left: 300px;
-    }
-
     .title{
         border-color: #47C6EF;
     }

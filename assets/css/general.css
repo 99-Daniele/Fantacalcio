@@ -354,7 +354,7 @@ a{
 
 .goBackButton{
     position: absolute;
-    bottom: 40px;
+    top: 140px;
     padding: 8px;
     border: 2px solid black;
     width: fit-content;

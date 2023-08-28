@@ -22,7 +22,7 @@
     <div class="goBackButton" @click="$router.go(-1)">TORNA INDIETRO</div>
 </template>
 
-<style>
+<style scoped>
 
     .player-card:hover{
         box-shadow: 0 0 10px black;
@@ -36,6 +36,10 @@
         top: 140px;
         right: 120px;
         cursor: pointer;
+    }
+
+    .goBackButton{
+        left: 500px;
     }
 
 </style>

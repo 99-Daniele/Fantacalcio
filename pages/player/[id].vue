@@ -11,6 +11,7 @@
     <div class="title" v-else style="border-color: red">
         {{player.Nome}}
     </div>
+    <div class="goBackButton" @click="$router.go(-1)">TORNA INDIETRO</div>
     <div id="big-card">
         <PlayerCard :name="player.Nome" :squad="player.team.Nome" :role="player.Ruolo" :id="player.Id" :color1="player.team.color1" :color2="player.team.color2" :rate="player.rate" :slot="player.slot" :cost="player.cost"/>
     </div>
@@ -52,7 +53,6 @@
             <img src="~\assets\img\aut.png" id="icon">: {{ player.Autogol }}
         </div>
     </div>
-    <div class="goBackButton" @click="$router.go(-1)">TORNA INDIETRO</div>
 </template>
 
 <style>
@@ -127,6 +127,10 @@
         font-family: "AlloyInk";
         justify-content: center;
         width: 20px;
+    }    
+    
+    .goBackButton{
+        left: 500px;
     }
 
 </style>

@@ -25,20 +25,20 @@
                 <th v-else><b>{{gridTeam[0].homeTeam.substring(0,3)}}</b></th>
                 <th v-for="game in gridTeam" v-if="gridTeam[0].homeTeam == t" style="background-color: black;">
                     <span v-if="game.round == 0"></span>
-                    <span v-else-if="game.totDif < 0" style="color:red;">
-                        <b>{{ game.totDif }}</b>
+                    <span v-else-if="game.totDif < 50" style="color:red;">
+                        <b>{{ Math.ceil(game.totDif) }}</b>
                     </span>
                     <span v-else style="color:green">
-                        <b>{{ game.totDif }}</b>
+                        <b>{{ Math.ceil(game.totDif) }}</b>
                     </span>
                 </th>
                 <th v-for="game in gridTeam" v-else>
                     <span v-if="game.round == 0"></span>
-                    <span v-else-if="game.totDif < 0" style="color:red;">
-                        {{ game.totDif }}
+                    <span v-else-if="game.totDif < 50" style="color:red;">
+                        {{ Math.ceil(game.totDif) }}
                     </span>
                     <span v-else style="color:green">
-                        {{ game.totDif }}
+                        {{ Math.ceil(game.totDif) }}
                     </span>
                 </th>
             </tr>
@@ -48,16 +48,20 @@
                 <div style="color:green; font-weight: bold; padding: 5px 0;">
                     MIGLIORI COPPIE
                 </div>
-                <div v-for="couple in best" style="border-top: solid 1px black;">
-                    {{ couple.homeTeam }} - {{ couple.awayTeam }}: <b style="color:green">{{ couple.totDif }}</b>
+                <div v-for="couple in best">
+                    <div v-if="couple.homeTeam != couple.awayTeam" style="border-top: solid 1px black;">
+                        {{ couple.homeTeam }} - {{ couple.awayTeam }}: <b>{{ Math.ceil(couple.totDif) }}</b>
+                    </div>
                 </div>
             </div>
             <div class="list-container">
                 <div style="color:red; font-weight: bold; padding: 5px 0;">
                     PEGGIORI COPPIE
                 </div>
-                <div v-for="couple in worst" style="border-top: solid 1px black;">
-                    {{ couple.homeTeam }} - {{ couple.awayTeam }}: <b style="color:red">{{ couple.totDif }}</b>
+                <div v-for="couple in worst">
+                    <div v-if="couple.homeTeam != couple.awayTeam" style="border-top: solid 1px black;">
+                        {{ couple.homeTeam }} - {{ couple.awayTeam }}: <b>{{ Math.ceil(couple.totDif) }}</b>
+                    </div>
                 </div>
             </div>
         </div>
@@ -132,7 +136,7 @@
     let worst = teamCalendar.value.slice();
 
     best = best.sort((a, b) => b.totDif - a.totDif).slice(0, 5);
-    worst = worst.sort((a, b) => a.totDif - b.totDif).slice(0, 5);
+    worst = worst.sort((a, b) => a.totDif - b.totDif).slice(0, 6);
 
     teams.value.forEach(team => {
         const games = [];

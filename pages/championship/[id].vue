@@ -1,7 +1,8 @@
 <template>
     <div class="title">
-        {{ championship.Nome }}
+        {{ championship.name }}
     </div>
+    <div class="goBackButton" @click="$router.go(-1)">TORNA INDIETRO</div>
     <div class="container">
         <div v-for="squad in championship.squad">
             <NuxtLink :to="'/squad/' + squad.squadId">
@@ -27,7 +28,6 @@
         <input type = "text" id = "playerName" autocomplete="off">
         <div id="submit" @click="createSquad()">Crea squadra</div>
     </div>
-    <div class="goBackButton" @click="$router.go(-1)">TORNA INDIETRO</div>
 </template>
 
 <style scoped>
@@ -40,6 +40,10 @@
     #playerName{
         margin-bottom: 24px;
         border-radius: 8px;
+    }
+
+    .goBackButton{
+        left: 500px;
     }
 
 </style>

@@ -1,13 +1,18 @@
 <template>
     <div class="title">
-        {{ champ.Nome }}
+        {{ champ.name }}
     </div>
     <div id="p-card">
         <PlayerCard :name="filteredPlayers[0].Nome" :squad="filteredPlayers[0].team.Nome" :role="filteredPlayers[0].Ruolo" :id="filteredPlayers[0].Id" :color1="filteredPlayers[0].team.color1" :color2="filteredPlayers[0].team.color2" :rate="filteredPlayers[0].rate" :slot="filteredPlayers[0].slot" :cost="filteredPlayers[0].cost"/>
     </div>
-    <NuxtLink :to="'/auction/championship/player/' + champ.Id">
+    <NuxtLink :to="'/auction/championship/player/' + champ.id">
         <div class="link">
             SVINCOLATI <img src="~\assets\img\link.png" id="icon">
+        </div>
+    </NuxtLink>
+    <NuxtLink to="/calendar/grid">
+        <div class="link" style="left: 540px; width: 180px;">
+            GRIGLIA PORTIERI <img src="~\assets\img\link.png" id="icon">
         </div>
     </NuxtLink>
     <input id="search" type="text" v-model="search" placeholder="Cerca giocatore..." autocomplete="off" list="searchedPlayers" @change="showPlayer()">
@@ -182,7 +187,7 @@
 
     .link{
         font-size: 20px;
-        top: 148px;
+        top: 142px;
         left: 360px;
         width: 124px;
     }

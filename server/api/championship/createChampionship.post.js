@@ -7,8 +7,8 @@ export default defineEventHandler(async (event) => {
 
     const champId = await client 
         .from('championship')
-        .select('Id')
-        .order('Id', {ascending: false})
+        .select('id')
+        .order('id', {ascending: false})
         .limit(1)
         .single();   
 

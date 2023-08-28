@@ -4,9 +4,9 @@
     </div>
     <div class="container">
         <div v-for="championship in championships">
-            <NuxtLink :to="'/championship/' + championship.Id">
+            <NuxtLink :to="'/championship/' + championship.id">
                 <div class="small-container">
-                    {{championship.Nome}}
+                    {{championship.name}}
                 </div>
             </NuxtLink> 
         </div>
