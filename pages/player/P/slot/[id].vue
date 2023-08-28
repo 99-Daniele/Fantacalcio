@@ -14,25 +14,25 @@
             <NuxtLink to="/player/P"><div class="button-active">1</div></NuxtLink>
         </div>
         <div v-else>
-            <NuxtLink to="/player/P/slot/1"><div class="button">1</div></NuxtLink>
+            <NuxtLink to="/player/P/slot/1"><div class="slot-button">1</div></NuxtLink>
         </div>
         <div v-if="slot == 2">
             <NuxtLink to="/player/P"><div class="button-active">2</div></NuxtLink>
         </div>
         <div v-else>
-            <NuxtLink to="/player/P/slot/2"><div class="button">2</div></NuxtLink>
+            <NuxtLink to="/player/P/slot/2"><div class="slot-button">2</div></NuxtLink>
         </div>
         <div v-if="slot == 3">
             <NuxtLink to="/player/P"><div class="button-active">3</div></NuxtLink>
         </div>
         <div v-else>
-            <NuxtLink to="/player/P/slot/3"><div class="button">3</div></NuxtLink>
+            <NuxtLink to="/player/P/slot/3"><div class="slot-button">3</div></NuxtLink>
         </div>
         <div v-if="slot == 0">
             <NuxtLink to="/player/P"><div class="button-active">4+</div></NuxtLink>
         </div>
         <div v-else>
-            <NuxtLink to="/player/P/slot/0"><div class="button">4+</div></NuxtLink>
+            <NuxtLink to="/player/P/slot/0"><div class="slot-button">4+</div></NuxtLink>
         </div>
     </div>
     <div class="card-container">

@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
 
     const { error } = await client
         .from('squad')
-        .insert({ squadId: squadId.data.squadId + 1, championshipId: data[0], Nome: data[1], Giocatore: data[2] }); 
+        .insert({ squadId: squadId.data.squadId + 1, championshipId: data[0], name: data[1], gamer: data[2] }); 
   
     if (error) {
         throw createError({ statusCode: 400, statusMessage: error.message });

@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
 
     const { error } = await client
         .from('squad')
-        .update({ Nome: data[1], Giocatore: data[2] })
+        .update({ name: data[1], gamer: data[2] })
         .eq('squadId', id); 
   
     if (error) {

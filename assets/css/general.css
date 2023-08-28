@@ -278,7 +278,7 @@ a{
     transition: 0.5s;
 }
 
-.button{
+.slot-button{
     width: 80px;
     border-radius: 8px;
     border: solid 1px black;
@@ -509,6 +509,15 @@ a{
     margin-top: 2px;
 }
 
+.searched-player-list{
+    margin-top: 20px;
+    max-height: 100px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+    width: 160px;
+}
+
 .rate-container{
     border: solid 1px black;
     width: 12px;
@@ -544,4 +553,243 @@ a{
 
 .link:hover{
     box-shadow: 0 0 10px black;
+}
+
+#squadName{
+    margin-bottom: 24px;
+    border-radius: 8px;
+}
+
+#playerName{
+    margin-bottom: 24px;
+    border-radius: 8px;
+}
+
+.role-circle{
+    border-radius: 50%;
+    width: 18px;
+    color: white;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.role-circle:hover{
+    filter: grayscale(100%);
+    color: black;
+}
+
+#squad-list{
+    width: 160px;
+    border-radius: 8px;
+    margin-bottom: 90px;
+    margin-right: 20px;
+}
+
+#p-card{
+    visibility: hidden;
+}
+
+#p-card .player-card{
+    position: absolute;
+    top: 80px;
+    right: 160px;
+}
+
+#cost{
+    width: 60px;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+#delete{
+    display: flex;
+}
+
+.grid-container{
+    display: flex;
+    width: 1200px;
+    justify-content: space-around;
+}
+
+.list-container{
+    border: solid 1px black;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 180px;
+    line-height: 26px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.round-container{
+    border: solid 1px black;
+    width: 260px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.round-nr{
+    border-bottom: solid 1px black;
+    padding: 4px 0;
+}
+
+.round-game{
+    height: 48px;
+    display: flex;
+}
+
+.round-game-team{
+    width: 50%;
+    display: flex;
+    padding-left: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    align-items: center;
+}
+
+.round-logo{
+    width: 20px;
+    margin-right: 8px;
+}
+
+#round-logo{
+  height: 24px;
+}
+
+.left-rectangle{
+    position: absolute;
+    margin-top: 2.5px;
+    width: 24px;
+    height: 40px;
+    rotate: 45deg;
+    border: solid 1px black;
+    z-index: 0;
+}
+
+.left-big-rectangle{
+    position: absolute;
+    margin-left: 18px;
+    width: 32px;
+    height: 80px;
+    border-top: solid 1px black;
+    border-left: solid 1px black;
+    border-bottom: solid 1px black;
+    z-index: 1;
+}
+
+.right-big-rectangle{
+    position: absolute;
+    margin-left: 50px;
+    width: 32px;
+    height: 80px;
+    border-top: solid 1px black;
+    border-right: solid 1px black;
+    border-bottom: solid 1px black;
+    z-index: 1;
+}
+
+.right-rectangle{
+    position: absolute;
+    margin-top: 2.5px;
+    margin-left: 76px;
+    width: 24px;
+    height: 40px;
+    rotate: 135deg;
+    border: solid 1px black;
+    z-index: 0;
+}
+
+.role{
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 40px;
+    margin-top: 12px;
+    -webkit-text-stroke: 1px black;
+    z-index: 2;
+}
+
+#big-card{
+    position: absolute;
+    top: 120px;
+    left: 60%;
+}
+
+#big-card .player-card {
+    width: 320px;
+    height: 440px;
+}
+
+#big-card .player-card .data-container .name{
+    font-size: 32px;
+}
+
+#big-card .player-card .data-container .extra{
+  font-size: 24px;
+}
+
+#big-card .player-card .data-container .rate{
+  font-size: 96px;
+}
+
+#big-card .left-rectangle{
+    margin-top: 5px;
+    width: 48px;
+    height: 80px;
+}
+
+#big-card .left-big-rectangle{
+    margin-left: 36px;
+    width: 64px;
+    height: 160px;
+}
+
+#big-card .right-big-rectangle{
+    margin-left: 100px;
+    width: 64px;
+    height: 160px;
+}
+
+#big-card .right-rectangle{
+    margin-top: 5px;
+    margin-left: 152px;
+    width: 48px;
+    height: 80px;
+}
+
+#big-card .role{
+    font-size: 80px;
+    margin-left: 80px;
+    margin-top: 24px;
+}
+
+.player-infos{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 12px;
+}
+
+.player-info{
+    width: 50%;
+}
+
+.player-info-text{
+    font-size: 14px;
+    font-family: "AlloyInk";
+    justify-content: center;
+    width: 20px;
+} 
+
+.team-card .data-container{
+  width: 40%;
+  text-align: center;
+  padding: 8px 14px;
+}
+
+#pos{
+  padding: 14px;
+  font-size: 48px;
 }

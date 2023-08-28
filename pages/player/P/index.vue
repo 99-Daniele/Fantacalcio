@@ -10,10 +10,10 @@
         <NuxtLink to="/player/A"><div id="a-button">A</div></NuxtLink>
     </div>
     <div class="slot-button-container">
-        <NuxtLink to="/player/P/slot/1"><div class="button">1</div></NuxtLink>
-        <NuxtLink to="/player/P/slot/2"><div class="button">2</div></NuxtLink>
-        <NuxtLink to="/player/P/slot/3"><div class="button">3</div></NuxtLink>
-        <NuxtLink to="/player/P/slot/0"><div class="button">4+</div></NuxtLink>
+        <NuxtLink to="/player/P/slot/1"><div class="slot-button">1</div></NuxtLink>
+        <NuxtLink to="/player/P/slot/2"><div class="slot-button">2</div></NuxtLink>
+        <NuxtLink to="/player/P/slot/3"><div class="slot-button">3</div></NuxtLink>
+        <NuxtLink to="/player/P/slot/0"><div class="slot-button">4+</div></NuxtLink>
     </div>
     <div class="card-container">
         <div v-for="player in searchedPlayers">

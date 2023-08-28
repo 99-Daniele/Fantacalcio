@@ -45,50 +45,15 @@
 
 <style scoped>
 
+    .rounds-container{
+        margin-top: 40px;
+    }
+
     #logo{
         position: absolute;
         height: 120px;
         top: 100px;
         right: 120px;
-    }
-
-    .rounds-container{
-        margin-top: 40px;
-    }
-
-    .round-container{
-        border: solid 1px black;
-        width: 260px;
-        border-radius: 8px;
-        text-align: center;
-    }
-
-    .round-nr{
-        border-bottom: solid 1px black;
-        padding: 4px 0;
-    }
-
-    .round-game{
-        height: 48px;
-        display: flex;
-    }
-
-    .round-game-team{
-        width: 50%;
-        display: flex;
-        padding-left: 16px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        align-items: center;
-    }
-
-    .round-logo{
-        width: 20px;
-        margin-right: 8px;
-    }
-
-    #round-logo{
-      height: 24px;
     }
 
 </style>

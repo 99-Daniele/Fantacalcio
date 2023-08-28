@@ -91,23 +91,6 @@
         height: 20px;
     }
 
-    .grid-container{
-        display: flex;
-        width: 1200px;
-        justify-content: space-around;
-    }
-
-    .list-container{
-        border: solid 1px black;
-        text-align: center;
-        border-radius: 8px;
-        font-size: 16px;
-        width: 180px;
-        line-height: 26px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-
     .link{
         position: absolute;
         top: 80px;

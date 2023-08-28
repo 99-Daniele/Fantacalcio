@@ -32,16 +32,6 @@
 
 <style scoped>
 
-    #squadName{
-        margin-bottom: 24px;
-        border-radius: 8px;
-    }
-
-    #playerName{
-        margin-bottom: 24px;
-        border-radius: 8px;
-    }
-
     .goBackButton{
         left: 500px;
     }

@@ -53,37 +53,13 @@
         margin-top: 40px;
     }
 
-    .round-container{
-        border: solid 1px black;
-        width: 260px;
-        border-radius: 8px;
-        text-align: center;
-    }
-
     .round-nr{
-        border-bottom: solid 1px black;
-        padding: 4px 0;
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
     }
 
     .round-game{
         height: 32px;
-        display: flex;
-    }
-
-    .round-game-team{
-        width: 50%;
-        display: flex;
-        padding-left: 16px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        align-items: center;
-    }
-
-    .round-logo{
-        width: 20px;
-        margin-right: 8px;
     }
 
     #round-logo{

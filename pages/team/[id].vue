@@ -32,7 +32,7 @@
         top: 212px;
         left: 120px;
     }
-
+  
     #logo{
         position: absolute;
         height: 120px;

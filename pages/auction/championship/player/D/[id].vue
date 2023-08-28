@@ -48,7 +48,7 @@
 
     for(let j = 0; j < chosenPlayers.value.length; j++){
         for(let i = 0; i < players.value.length; i++)
-            if(players.value[i]-id === chosenPlayers.value[j].playerId)
+            if(players.value[i].id === chosenPlayers.value[j].playerId)
                 players.value.splice(i, 1);
     }
 

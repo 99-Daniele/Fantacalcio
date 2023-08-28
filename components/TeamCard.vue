@@ -14,17 +14,6 @@
 
 <style scoped>
 
-  .team-card .data-container{
-    width: 40%;
-    text-align: center;
-    padding: 8px 14px;
-  }
-
-  #pos{
-    padding: 14px;
-    font-size: 48px;
-  }
-
   #logo{
       height: 52px;
       align-items: center;

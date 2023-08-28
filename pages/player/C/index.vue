@@ -10,15 +10,15 @@
         <NuxtLink to="/player/A"><div id="a-button">A</div></NuxtLink>
     </div>
     <div class="slot-button-container">
-        <NuxtLink to="/player/C/slot/1"><div class="button">1</div></NuxtLink>
-        <NuxtLink to="/player/C/slot/2"><div class="button">2</div></NuxtLink>
-        <NuxtLink to="/player/C/slot/3"><div class="button">3</div></NuxtLink>
-        <NuxtLink to="/player/C/slot/4"><div class="button">4</div></NuxtLink>
-        <NuxtLink to="/player/C/slot/5"><div class="button">5</div></NuxtLink>
-        <NuxtLink to="/player/C/slot/6"><div class="button">6</div></NuxtLink>
-        <NuxtLink to="/player/C/slot/7"><div class="button">7</div></NuxtLink>
-        <NuxtLink to="/player/C/slot/8"><div class="button">8</div></NuxtLink>
-        <NuxtLink to="/player/C/slot/0"><div class="button">9+</div></NuxtLink>
+        <NuxtLink to="/player/C/slot/1"><div class="slot-button">1</div></NuxtLink>
+        <NuxtLink to="/player/C/slot/2"><div class="slot-button">2</div></NuxtLink>
+        <NuxtLink to="/player/C/slot/3"><div class="slot-button">3</div></NuxtLink>
+        <NuxtLink to="/player/C/slot/4"><div class="slot-button">4</div></NuxtLink>
+        <NuxtLink to="/player/C/slot/5"><div class="slot-button">5</div></NuxtLink>
+        <NuxtLink to="/player/C/slot/6"><div class="slot-button">6</div></NuxtLink>
+        <NuxtLink to="/player/C/slot/7"><div class="slot-button">7</div></NuxtLink>
+        <NuxtLink to="/player/C/slot/8"><div class="slot-button">8</div></NuxtLink>
+        <NuxtLink to="/player/C/slot/0"><div class="slot-button">9+</div></NuxtLink>
     </div>
     <div class="card-container">
         <div v-for="player in searchedPlayers">

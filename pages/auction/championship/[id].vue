@@ -99,16 +99,6 @@
 
 <style scoped>
 
-    #squadName{
-        margin-bottom: 24px;
-        border-radius: 8px;
-    }
-
-    #playerName{
-        margin-bottom: 24px;
-        border-radius: 8px;
-    }
-
     .container{
         gap: 8px;
         margin-left: -80px
@@ -118,33 +108,11 @@
         font-size: 16px;
     }
 
-    .role-circle{
-        border-radius: 50%;
-        width: 18px;
-        color: white;
-        margin-top: 2px;
-        cursor: pointer;
-    }
-
-    .role-circle:hover{
-        filter: grayscale(100%);
-        color: black;
-    }
-
     #search{ 
         position: relative;
         top: 0;
         right: 0;
         margin-right: 20px;
-    }
-
-    .searched-player-list{
-        margin-top: 20px;
-        max-height: 100px;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        margin-bottom: 20px;
-        width: 160px;
     }
 
     .player-container{
@@ -159,35 +127,12 @@
         height:auto;
     }
 
-    #squad-list{
-        width: 160px;
-        border-radius: 8px;
-        margin-bottom: 90px;
-        margin-right: 20px;
-    }
-
-    #p-card{
-        visibility: hidden;
-    }
-
-    #p-card .player-card{
-        position: absolute;
-        top: 80px;
-        right: 160px;
-    }
-
     .cost-container{
         height: 14.2px;
     }
 
     .rate-container{
         height: 14.2px;
-    }
-
-    #cost{
-        width: 60px;
-        border-radius: 8px;
-        margin-right: 20px;
     }
 
     .link{
@@ -200,10 +145,6 @@
     .hidden-container{
         width: 300px;
         left: 550px;
-    }
-
-    #delete{
-        display: flex;
     }
 
     button{
