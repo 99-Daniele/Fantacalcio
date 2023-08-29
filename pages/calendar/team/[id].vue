@@ -56,6 +56,44 @@
         right: 120px;
     }
 
+    @media (max-width: 768px) {
+
+        #logo{
+            height: 80px;
+            top: 64px;
+            right: 90px;
+        }
+        .rounds-container{
+            width: 380px;
+            margin-left: -80px;
+            font-size: 8px;
+            margin-top: 10px;
+        }
+
+        .team-container{
+            margin-top: 20px;
+            width: 320px;
+            margin-left: -50px;
+        }
+
+        #calendar-logo{
+            height: 14px;
+            transition: 0.5s;
+        }
+
+        .calendar-container{
+            width: 300px;
+            column-gap: 48px;
+            row-gap: 40px;
+            margin-left: -20px;
+        }
+
+        .go-up{
+            bottom: 40px;
+            right: 12px;
+        }
+}
+
 </style>
 
 <script setup>

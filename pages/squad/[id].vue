@@ -42,6 +42,23 @@
         left: 500px;
     }
 
+    @media (max-width: 768px) {
+
+        .goBackButton{
+            left: 90px;
+            top: 160px;
+        } 
+
+        #icon{
+            top: 80px;
+            right: 80px;
+        }
+
+        .card-container{
+            margin-top: 100px;
+        }
+    }
+
 </style>
 
 <script setup>

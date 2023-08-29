@@ -36,6 +36,16 @@
         left: 500px;
     }
 
+    @media (max-width: 768px) {
+        .goBackButton{
+            left: 90px;
+        }  
+
+        .container{
+            margin-top: 100px;
+        }
+    }
+
 </style>
 
 <script setup>

@@ -630,6 +630,8 @@ a{
 }
 
 .round-nr{
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     border-bottom: solid 1px black;
     padding: 4px 0;
 }
@@ -792,4 +794,190 @@ a{
 #pos{
   padding: 14px;
   font-size: 48px;
+}
+
+@media (max-width: 768px) {
+
+    .page{
+        margin-left: 90px;
+        font-family:'Calibri';
+        margin-bottom: 20px;
+    }
+
+    #mark{
+        margin-left: 20px;
+        margin-top: 6px;
+        width: 30px;
+        height: 30px;
+    }  
+
+    .navigator{
+        box-shadow: 0 0 4px black;
+        height: 40px;
+        display: flex;
+    }  
+
+    .landmark{
+        margin-top: 14px;
+        position: absolute;
+        left: 80px;
+        display: flex;
+        gap: 24px
+    }
+
+    .landmark a{
+        color: black;
+        border-bottom: solid 2px transparent;
+        font-family:'Calibri';
+        font-size: 12px;
+        transition: 0.5s;
+    }
+    
+    .title{
+        margin-top: 30px;
+        padding-top: 6px;
+        font-size: 24px;
+    }
+
+    .container{
+        margin-top: 60px;
+        gap: 16px;
+    }
+
+    .small-container{
+        width: 180px;
+        padding: 20px;
+        font-size: 24px;
+    }
+
+    .hidden-container{
+        left: 80px;
+    }
+
+    .goBackButton{
+        top: 140px;
+    }
+    
+    #big-card{
+        position: absolute;
+        top: 220px;
+        left: 90px;
+    }
+
+    #big-card .player-card {
+        width: 200px;
+        height: 275px;
+    }
+
+    #big-card .player-card .data-container .name{
+        font-size: 20px;
+    }
+
+    #big-card .player-card .data-container .extra{
+        font-size: 15px;
+    }
+
+    #big-card .player-card .data-container .rate{
+        font-size: 60px;
+    }
+
+    #big-card .left-rectangle{
+        margin-top: 4px;
+        width: 30px;
+        height: 50px;
+    }
+
+    #big-card .left-big-rectangle{
+        margin-left: 22.5px;
+        width: 40px;
+        height: 100px;
+    }
+
+    #big-card .right-big-rectangle{
+        margin-left: 62.5px;
+        width: 40px;
+        height: 100px;
+    }
+
+    #big-card .right-rectangle{
+        margin-top: 4px;
+        margin-left: 95px;
+        width: 30px;
+        height: 50px;
+    }
+
+    #big-card .role{
+        font-size: 50px;
+        margin-left: 50px;
+        margin-top: 15px;
+    }
+
+    .player-infos{
+        margin-top: 420px;
+        width: 100%;
+        row-gap: 6px;
+    }
+    
+    .player-info{
+        width: 33%;
+    }
+
+    #p-button{
+        width: 160px;
+    }
+
+    #p-button-active{
+        width: 160px;
+    }
+
+    #d-button{
+        width: 160px;
+    }
+
+    #d-button-active{
+        width: 160px;
+    }
+
+    #c-button{
+        width: 160px;
+    }
+
+    #c-button-active{
+        width: 160px;
+    }
+
+    #a-button{
+        width: 160px;
+    }
+
+    #a-button-active{
+        width: 160px;
+    }
+        
+    .role-button-container{
+        flex-direction: column;
+        width: 160px;
+        margin-top: 20px;
+        row-gap: 20px;
+    }
+
+    .card-container{
+        margin-top: 120px;
+    }
+    
+    .slot-button-container{
+        width: 160px;
+        margin-top: 20px;
+    }
+
+    .slot-button{
+        width: 20px;
+        font-size: 16px;
+    }
+
+    .button-active{
+        width: 20px;
+        font-size: 16px;
+    }
+
 }

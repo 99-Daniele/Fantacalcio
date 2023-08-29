@@ -11,7 +11,7 @@
         </div>
     </NuxtLink>
     <NuxtLink to="/calendar/grid">
-        <div class="link" style="left: 540px; width: 180px;">
+        <div class="link" id="grid-link">
             GRIGLIA PORTIERI <img src="~\assets\img\link.png" id="icon">
         </div>
     </NuxtLink>
@@ -24,7 +24,7 @@
         <option :value="squad.name" v-for="squad in champ.squad">{{ squad.name }}</option>
     </select>
     <input type="number" min="1" id="cost">
-    <input type="submit" style="border-radius: 8px; width: 60px; cursor:pointer;" @click="buyPlayer()">
+    <input type="submit" style="border-radius: 8px; width: 60px; cursor:pointer;" @click="buyPlayer()" id="buy">
     <div class="container">
         <div v-for="squad in champ.squad">
             <div class="mini-container">
@@ -142,6 +142,11 @@
         width: 124px;
     }
 
+    #grid-link{
+        left: 540px; 
+        width: 180px;
+    }
+
     .hidden-container{
         width: 300px;
         left: 550px;
@@ -153,6 +158,55 @@
         margin-left: 20px;
         width: 60px;
         cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+
+        #grid-link{
+            top: 140px;
+            left: 90px;
+            display: none;
+        }
+
+        .link{
+            top: 140px;
+            left: 90px;
+        }
+
+        .hidden-container{
+            left: 30px;
+        }
+
+        #search{
+            top: 40px;
+        }
+
+        #squad-list{
+            margin-top: 80px;
+            margin-bottom: 90px;
+            margin-right: 20px;
+        }
+
+        #cost{
+            position: absolute;
+            top: 310px;
+            left: 90px;
+        }
+
+        #buy{
+            position: absolute;
+            top: 360px;
+            left: 90px;
+        }
+
+        #p-card{
+            display: none;
+        }
+
+        .container{
+            margin-left: 0px
+        }
+
     }
 
 </style>
@@ -190,7 +244,6 @@
 
 <script>
 
-    
     export default {
         data(){
             return{
@@ -201,6 +254,10 @@
         methods: {
             showDelete: function(squadName, i){
                 if(document.getElementById(squadName + " - " + (i - 1)) != null){
+                    window.scrollTo({
+                        top: document.getElementById("delete-container").offsetTop - 40,
+                        behavior: 'smooth',
+                    })
                     document.getElementById("delete-container").style.visibility = 'visible';
                     this.deletedPlayer = document.getElementById(squadName + " - " + (i - 1)).textContent;
                     this.deletedSquad = squadName;

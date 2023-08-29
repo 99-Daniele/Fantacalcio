@@ -46,6 +46,31 @@
         width: 1220px;
     }
 
+    @media (max-width: 768px) {
+
+        #logo{
+            height: 80px;
+            top: 64px;
+            right: 90px;
+        }
+
+        .team-container{
+            margin-top: 20px;
+            width: 320px;
+            margin-left: -50px;
+        }
+
+        #calendar-logo{
+            height: 14px;
+            transition: 0.5s;
+        }
+
+        #search{
+            top: 240px;
+            left: 90px;
+        }
+    }
+
 </style>
 
 <script setup>

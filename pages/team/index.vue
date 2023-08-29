@@ -26,6 +26,13 @@
         padding-top: 8px;
     }
 
+    @media (max-width: 768px) {
+
+        .card-container{
+            width: 160px;
+        }
+    }
+
 </style>
 
 <script setup>

@@ -62,6 +62,20 @@
         border-color: orange;
     }
 
+    @media (max-width: 768px) {
+
+        #search{
+            top: 400px;
+            left: 90px;
+            width: 160px;
+        }
+
+        .slot-button-container{
+            width: 120px;
+        }
+
+    }
+
 </style>
 
 <script setup>

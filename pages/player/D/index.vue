@@ -43,6 +43,20 @@
         border-color: #47C6EF;
     }
 
+    @media (max-width: 768px) {
+
+        #search{
+            top: 400px;
+            left: 90px;
+            width: 160px;
+        }
+
+        .slot-button-container{
+            width: 220px;
+        }
+
+    }
+
 </style>
 
 <script setup>

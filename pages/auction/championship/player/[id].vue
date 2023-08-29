@@ -29,6 +29,23 @@
         transition: 0.5s;
     }
 
+    @media (max-width: 768px) {
+        .goBackButton{
+            top: 140px;
+            left: 90px;
+        }
+
+        .role-button-container{
+            margin-top: 60px;
+        }
+
+        #search{
+            top: 450px;
+            left: 90px;
+        }
+
+    }
+
 </style>
 
 <script setup>

@@ -61,6 +61,13 @@
         left: 500px;
     }
 
+    @media (max-width: 768px) {
+        
+        .goBackButton{
+            left: 90px;
+        }  
+    }
+
 </style>
 
 <script setup>

@@ -33,6 +33,23 @@
         border-color: rgb(92, 255, 47);
     }
 
+    @media (max-width: 768px) {
+        .goBackButton{
+            top: 140px;
+            left: 90px;
+        }
+
+        .role-button-container{
+            margin-top: 60px;
+        }
+
+        #search{
+            top: 450px;
+            left: 90px;
+        }
+        
+    }
+
 </style>
 
 <script setup>

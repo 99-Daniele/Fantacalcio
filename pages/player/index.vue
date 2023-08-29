@@ -28,6 +28,29 @@
         transition: 0.5s;
     }
 
+    @media (max-width: 768px) {
+        .role-button-container{
+            display: flex;
+            flex-direction: column;
+            width: 160px;
+            margin-top: 20px;
+            row-gap: 20px;
+        }
+
+        #search{
+            top: 360px;
+            left: 90px;
+            width: 160px;
+        }
+
+        .card-container{
+            margin-top: 120px;
+        }
+
+    }
+
+
+    
 </style>
 
 <script setup>
