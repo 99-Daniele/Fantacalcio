@@ -46,7 +46,7 @@
         <div class="player-info">
             <img src="~\assets\img\R-.png" id="icon">: {{ player.RSB }}
         </div>
-        <div class="player-info" v-if="player.Ruolo == 'P'">
+        <div class="player-info" v-if="player.role == 'P'">
             <img src="~\assets\img\RP.png" id="icon">: {{ player.RP }}
         </div>
         <div class="player-info">
