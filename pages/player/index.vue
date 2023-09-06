@@ -2,6 +2,7 @@
     <div class="title">
         Giocatori
     </div>
+    <button @click="downloadPlayer()">AGGIORNA GIOCATORI</button>
     <input id="search" type="text" v-model="search" placeholder="Cerca giocatore..." autocomplete="off"/>
     <div class="role-button-container">
         <NuxtLink to="/player/P"><div id="p-button">P</div></NuxtLink>
@@ -22,6 +23,16 @@
 </template>
 
 <style scoped>
+
+    button{
+        position: absolute;
+        border-radius: 8px;
+        width: fit-content;
+        cursor: pointer;
+        top: 148px;
+        left: 360px;
+        font-size: 20px;
+    }
 
     .player-card:hover{
         box-shadow: 0 0 10px black;
@@ -77,12 +88,44 @@
 <script>
 
     export default {
+        data(){
+            return{
+                newPlayers: null
+            }
+        },
         methods: {
             back: function(){
                 window.scrollTo({
                     top: document.getElementById("search").offsetTop - 40,
                     behavior: 'smooth',
                 })
+            },
+            async downloadPlayer(){
+                this.newPlayers = await useFetch('/api/player/downloadPlayers')
+                for(let i = 0; i < this.newPlayers.data.players.length; i++){
+                    await useFetch('/api/player/updatePlayer', {
+                        method: 'post',
+                        body: {
+                            data: [
+                                this.newPlayers.data.players[i].id, 
+                                this.newPlayers.data.players[i].caps, 
+                                this.newPlayers.data.players[i].markavg, 
+                                this.newPlayers.data.players[i].fmarkavg, 
+                                this.newPlayers.data.players[i].goals, 
+                                this.newPlayers.data.players[i].gotgoals,
+                                this.newPlayers.data.players[i].spenalties,
+                                this.newPlayers.data.players[i].penalties,
+                                this.newPlayers.data.players[i].mpenalties,
+                                this.newPlayers.data.players[i].assists,
+                                this.newPlayers.data.players[i].ycards,
+                                this.newPlayers.data.players[i].rcards,
+                                this.newPlayers.data.players[i].owngoals
+                            ]
+                        } 
+                    })
+                }
+                alert("Giocatori aggiornati correttamente")
+                reloadNuxtApp()
             }
         }
     }

@@ -54,6 +54,9 @@ declare module 'nitropack' {
     '/api/player/D/top': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/D/top').default>>>>
     }
+    '/api/player/downloadPlayers': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/downloadPlayers').default>>>>
+    }
     '/api/player': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/index.get').default>>>>
     }
@@ -65,6 +68,9 @@ declare module 'nitropack' {
     }
     '/api/player/P/top': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/P/top').default>>>>
+    }
+    '/api/player/updatePlayer': {
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/updatePlayer.post').default>>>>
     }
     '/api/squad/:id': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/squad/[id]').default>>>>
