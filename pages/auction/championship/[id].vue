@@ -29,7 +29,7 @@
         <div v-for="squad in champ.squad">
             <div class="mini-container">
                 <div class="squad-name-container">
-                    R: {{ calcRate(squad.squadPlayers) }}  C: {{ calcCost(squad.squadPlayers) }}
+                    R: {{ Math.ceil(calcRate(squad.squadPlayers)) }}  C: {{ calcCost(squad.squadPlayers) }}
                 </div>
             </div>
             <div class="mini-container">
@@ -100,8 +100,10 @@
 <style scoped>
 
     .container{
-        gap: 8px;
-        margin-left: -80px
+        width: 1360px;
+        margin-left: -80px;
+        justify-content: space-around;
+        gap: 0px
     }
 
     .squad-name-container{
