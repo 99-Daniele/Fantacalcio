@@ -22,7 +22,7 @@
                     <span v-else-if="game.totDif < 50" style="color:red">
                         {{ Math.ceil(game.totDif) }}
                     </span>
-                    <span v-else style="color:green">
+                    <span v-else style="color:rgb(92, 255, 47)">
                         {{ Math.ceil(game.totDif) }}
                     </span>
                 </th>
@@ -30,7 +30,7 @@
         </table>
         <div>
             <div class="list-container">
-                <div style="color:green; font-weight: bold; padding: 5px 0;">
+                <div style="color:rgb(92, 255, 47); font-weight: bold; padding: 5px 0;">
                     MIGLIORI COPPIE
                 </div>
                 <div v-for="couple in best">

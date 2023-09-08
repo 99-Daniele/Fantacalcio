@@ -61,8 +61,11 @@
                     </div>
                 </div>
                 <div class="player-list">
-                    <div v-for="p in squad.squadPlayers">
-                        <div class="player-container" :id="squad.name + ' - ' + squad.squadPlayers.indexOf(p)">
+                    <div v-for="p in squad.squadPlayers.sort((a, b) => a.player.rate - b.player.rate).sort((a, b) => (b.player.role > a.player.role ? 1 : -1))">
+                        <div class="player-container" :id="squad.name + ' - ' + squad.squadPlayers.indexOf(p)" v-if="(((p.player.slot <= (squad.squadPlayers.indexOf(p) + 1)) && p.player.role == 'P') || ((p.player.slot <= (squad.squadPlayers.indexOf(p) - 2)) && p.player.role == 'D') || ((p.player.slot <= (squad.squadPlayers.indexOf(p) - 10)) && p.player.role == 'C') || ((p.player.slot <= (squad.squadPlayers.indexOf(p) - 18)) && p.player.role == 'A')) && p.player.slot != 0" style="background-color: rgb(92, 255, 47);">
+                            {{ p.player.name }}
+                        </div>
+                        <div class="player-container" :id="squad.name + ' - ' + squad.squadPlayers.indexOf(p)" v-else style="background-color: red;">
                             {{ p.player.name }}
                         </div>
                     </div>
