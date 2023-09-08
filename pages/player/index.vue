@@ -119,11 +119,13 @@
                                 this.newPlayers.data.players[i].assists,
                                 this.newPlayers.data.players[i].ycards,
                                 this.newPlayers.data.players[i].rcards,
-                                this.newPlayers.data.players[i].owngoals
+                                this.newPlayers.data.players[i].owngoals,
+                                i
                             ]
                         } 
                     })
                 }
+                //const { data: response } = await useFetch('/api/player/createAndDeletePlayer')
                 alert("Giocatori aggiornati correttamente")
                 reloadNuxtApp()
             }

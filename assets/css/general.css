@@ -452,7 +452,7 @@ a{
     padding: 20px;
     background-color: white;
     filter: drop-shadow(0 0 5px black);
-    z-index: 1;
+    z-index: 2;
     position: absolute;
     top: 200px;
     left: 600px;

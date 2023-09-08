@@ -45,6 +45,9 @@ declare module 'nitropack' {
     '/api/player/C/top': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/C/top').default>>>>
     }
+    '/api/player/createAndDeletePlayer': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/createAndDeletePlayer').default>>>>
+    }
     '/api/player/D': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/player/D/index.get').default>>>>
     }
