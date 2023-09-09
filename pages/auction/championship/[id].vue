@@ -27,14 +27,19 @@
     <input type="submit" style="border-radius: 8px; width: 60px; cursor:pointer;" @click="buyPlayer()" id="buy">
     <div class="container">
         <div v-for="squad in champ.squad">
-            <div class="mini-container">
+            <div class="mini-container" style="background-color: black; color: white; border-top-right-radius: 8px; border-top-left-radius: 8px;">
                 <div class="squad-name-container">
-                    R: {{ Math.ceil(calcRate(squad.squadPlayers)) }}  C: {{ calcCost(squad.squadPlayers) }}
+                    {{ squad.name }}
                 </div>
             </div>
             <div class="mini-container">
                 <div class="squad-name-container">
-                    {{ squad.name }}
+                    Cr: {{ 500 - calcCost(squad.squadPlayers) }} Pos: {{ calcCostPos(squad.squadPlayers, champ.squad) }}°
+                </div>
+            </div>
+            <div class="mini-container" style="border-bottom-right-radius: 8px; border-bottom-left-radius: 8px;">
+                <div class="squad-name-container">
+                    R: {{ Math.ceil(calcRate(squad.squadPlayers)) }} Pos: {{ calcRatePos(squad.squadPlayers, champ.squad) }}°
                 </div>
             </div>
             <div class="squad-list">
@@ -93,6 +98,11 @@
             </div>
         </div>
     </div>  
+    <div class="go-up" id="go-up-button" @click="back()">
+        <div class="circle">
+            <div class="arrow"></div>
+        </div>
+    </div>
     <div class="hidden-container" id="delete-container">
         <label id="delete">Sei sicuro di eliminare il giocatore {{ deletedPlayer }} dalla squadra {{deletedSquad}}?</label>
         <button @click="deletePlayer()">SI</button>
@@ -275,6 +285,22 @@
                 document.getElementById("p-card").style.visibility = 'visible';
                 
             },
+            calcCost: function(squadPlayers){
+                let cost = 0;
+                for(let i = 0; i < squadPlayers.length; i++){
+                    cost = cost + squadPlayers[i].cost;
+                }
+                return cost;
+            },
+            calcCostPos: function(squad, squads){
+                let cost = this.calcCost (squad);
+                let pos = 1;
+                for(let i = 0; i < squads.length; i++){
+                    if(this.calcCost(squads[i].squadPlayers) < cost)
+                        pos++
+                }
+                return pos;
+            },
             calcRate: function(squadPlayers){
                 let rate = 0;
                 for(let i = 0; i < squadPlayers.length; i++){
@@ -282,12 +308,20 @@
                 }
                 return rate;
             },
-            calcCost: function(squadPlayers){
-                let cost = 0;
-                for(let i = 0; i < squadPlayers.length; i++){
-                    cost = cost + squadPlayers[i].cost;
+            calcRatePos: function(squad, squads){
+                let rate = this.calcRate (squad);
+                let pos = 1;
+                for(let i = 0; i < squads.length; i++){
+                    if(this.calcRate(squads[i].squadPlayers) > rate)
+                        pos++
                 }
-                return cost;
+                return pos;
+            },
+            back: function(){
+                window.scrollTo({
+                    top: document.getElementById("search").offsetTop - 20,
+                    behavior: 'smooth',
+                })
             },
             async buyPlayer(){
                 let player = document.getElementById("search").value;
