@@ -67,10 +67,10 @@
                 </div>
                 <div class="player-list">
                     <div v-for="p in squad.squadPlayers.sort((a, b) => a.player.rate - b.player.rate).sort((a, b) => (b.player.role > a.player.role ? 1 : -1))">
-                        <div class="player-container" :id="squad.name + ' - ' + squad.squadPlayers.indexOf(p)" v-if="(((p.player.slot <= (squad.squadPlayers.indexOf(p) + 1)) && p.player.role == 'P') || ((p.player.slot <= (squad.squadPlayers.indexOf(p) - 2)) && p.player.role == 'D') || ((p.player.slot <= (squad.squadPlayers.indexOf(p) - 10)) && p.player.role == 'C') || ((p.player.slot <= (squad.squadPlayers.indexOf(p) - 18)) && p.player.role == 'A')) && p.player.slot != 0" style="background-color: rgb(92, 255, 47);">
+                        <div class="player-container" :id="squad.name + ' - ' + squad.squadPlayers.indexOf(p)" v-if="(((p.player.slot <= (squad.squadPlayers.indexOf(p) + 1)) && p.player.role == 'P') || ((p.player.slot <= (squad.squadPlayers.indexOf(p) - 2)) && p.player.role == 'D') || ((p.player.slot <= (squad.squadPlayers.indexOf(p) - 10)) && p.player.role == 'C') || ((p.player.slot <= (squad.squadPlayers.indexOf(p) - 18)) && p.player.role == 'A')) && p.player.slot != 0" style="background-color: rgb(135, 246, 105);">
                             {{ p.player.name }}
                         </div>
-                        <div class="player-container" :id="squad.name + ' - ' + squad.squadPlayers.indexOf(p)" v-else style="background-color: red;">
+                        <div class="player-container" :id="squad.name + ' - ' + squad.squadPlayers.indexOf(p)" v-else style="background-color: rgb(243, 111, 111);">
                             {{ p.player.name }}
                         </div>
                     </div>
@@ -97,12 +97,7 @@
                 </div>
             </div>
         </div>
-    </div>  
-    <div class="go-up" id="go-up-button" @click="back()">
-        <div class="circle">
-            <div class="arrow"></div>
-        </div>
-    </div>
+    </div> 
     <div class="hidden-container" id="delete-container">
         <label id="delete">Sei sicuro di eliminare il giocatore {{ deletedPlayer }} dalla squadra {{deletedSquad}}?</label>
         <button @click="deletePlayer()">SI</button>
@@ -134,6 +129,7 @@
         width: 60px;
         height: 14.2px;
         overflow: hidden;
+        font-weight: bold;
     }
 
     .player-container:hover{
@@ -236,13 +232,6 @@
     const id = route.params.id
     const { data: champ } = await useFetch('/api/championship/' + id)
     const { data: players } = await useFetch('/api/player/')
-    const { data: chosenPlayers } = await useFetch('/api/squadPlayers/' + id)
-
-    for(let i = 0; i < players.value.length; i++){
-        for(let j = 0; j < chosenPlayers.value.length; j++)
-            if(players.value[i].id === chosenPlayers.value[j].playerId)
-                players.value.splice(i, 1);
-    }   
 
     const filteredPlayers = computed(() => {
         if(search.value.length > 0){
@@ -316,12 +305,6 @@
                         pos++
                 }
                 return pos;
-            },
-            back: function(){
-                window.scrollTo({
-                    top: document.getElementById("search").offsetTop - 20,
-                    behavior: 'smooth',
-                })
             },
             async buyPlayer(){
                 let player = document.getElementById("search").value;
