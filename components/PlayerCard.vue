@@ -9,7 +9,7 @@
         </div>
         <div class="info">
           <div class="extra">
-            {{ squad }}<br>{{ cost }} cr<br>{{ slot }}° SLOT
+            {{ squad }}<br>{{ Math.ceil(cost) }} cr<br>{{ slot }}° SLOT
           </div>
           <div class="rate">
             {{ Math.ceil(rate) }}
