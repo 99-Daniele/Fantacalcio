@@ -24,6 +24,8 @@ export default defineEventHandler(async (event) => {
         .from('player')
         .update({'PG': PG, 'MV': MV, 'FM': FM, 'GF':GF, 'GS': GS, 'RP': RP, 'RSG': RSG, 'RSB': RSB, ass: ass, amm: amm, esp: esp, aut: aut})
         .eq('id', id); 
+    
+    console.log(cont, id)
   
     if (error) {
         throw createError({ statusCode: 400, statusMessage: error.message });

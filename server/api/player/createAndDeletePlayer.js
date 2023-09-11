@@ -8,8 +8,6 @@ export default defineEventHandler(async (event) => {
         .from('player')
         .insert({ id: 3, name:'Pippo'});
 
-      console.log(error)    
-
     if (error) {
         throw createError({ statusCode: 400, statusMessage: error.message });
     }
