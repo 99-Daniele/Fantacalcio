@@ -7,7 +7,7 @@
     </div>
     <img src="~\assets\img\modify.png" id="icon" @click="showModifier()">
     <div class="card-container">
-        <div v-for="p in squad.player">
+        <div v-for="p in squad.player.sort((a, b) => a.rate - b.rate).sort((a, b) => (b.role > a.role ? 1 : -1))">
             <NuxtLink :to='"/player/" + p.id'><PlayerCard :name="p.name" :squad="p.team.name" :role="p.role" :id="p.id" :color1="p.team.color1" :color2="p.team.color2" :rate="p.rate" :slot="p.slot" :cost="p.cost"/></NuxtLink>
         </div>
     </div>
